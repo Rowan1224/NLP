@@ -1,0 +1,7 @@
+transformers
+sentencepiece
+torch
+datasets
+scikit-learn
+nltk
+protobuf
