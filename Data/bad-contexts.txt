@@ -1,0 +1,496 @@
+Thus, because counters have a higher precedence than sequences,
+• Increasing precision (minimizing false positives) • Increasing recall (minimizing false negatives)
+/$[0-9]+/
+This pattern only allows $199.99 but not $199. We need to make the cents
+s/.* I’M (depressed|sad) .*/I AM SORRY TO HEAR YOU ARE \1/
+s/.* I AM (depressed|sad) .*/WHY DO YOU THINK YOU ARE \1/
+s/.* all .*/IN WHAT WAY/
+s/.* always .*/CAN YOU THINK OF A SPECIFIC EXAMPLE/
+He stepped out into the hall, was delighted to encounter a water brother.
+|V | = kN β (2.1) 2.3 • CORPORA 13
+The output of this command will be: THE SONNETS by William Shakespeare From fairest creatures We ...
+1945 A 72 AARON 19 ABBESS 25 Aaron 6 Abate 1 Abates 5 Abbess 6 Abbey 3 Abbot ...
+Alternatively, we can collapse all the upper case to lower case:
+tr -sc 'A-Za-z' '\n' < sh.txt | tr A-Z a-z | sort | uniq -c | sort -n -r
+(2.4) 姚明进入总决赛 "Yao Ming reaches the finals"
+(2.5) 姚明 YaoMing 进入 reaches 总决赛 finals or as 5 words ('Peking University' segmentation):
+(2.7) 姚 Yao 明 Ming 进 enter 入 enter 总 overall 决 decision 赛 game
+get merged to ne:
+If we continue, the next merges are:
+The Porter Stemmer
+produces the following stemmed output:
+Stanford President Marc Tessier-Lavigne
+Stanford University President Marc Tessier-Lavigne
+D[i, j] = min    D[i − 1, j] + del-cost(source[i]) D[i, j − 1] + ins-cost(target[ j]) D[i − 1, j − 1] + sub-cost(source[i], target[ j])
+D[i, j] = min        D[i − 1, j] + 1 D[i, j − 1] + 1 D[i − 1, j − 1] + 2; if source[i] = target[ j] 0; if source[i] = target[ j] (2.8)
+Alignment
+• The regular expression language is a powerful tool for pattern-matching.
+• Basic operations in regular expressions include concatenation of symbols, disjunction of symbols ([], |, and .), counters (*, +, and {n,m}), anchors (ˆ, $) and precedence operators ((,) ).
+Please turn your homework ...
+all of a sudden I notice three guys standing on the sidewalk
+than does this same set of words in a different order:
+on guys all I of notice sidewalk three a sudden standing the
+他 向 记者 介绍了 主要 内容 He to reporters introduced main content
+he introduced reporters to the main contents of the statement
+he briefed to reporters the main contents of the statement
+he briefed reporters on the main contents of the statement
+P(the|its water is so transparent that). (3.1)
+P(X 1 ...X n ) = P(X 1 )P(X 2 |X 1 )P(X 3 |X 1:2 ) . . . P(X n |X 1:n−1 ) = n k=1 P(X k |X 1:k−1 ) (3.3)
+Applying the chain rule to words, we get P(w 1:n ) = P(w 1 )P(w 2 |w 1 )P(w 3 |w 1:2 ) . . . P(w n |w 1: n−1 ) = n k=1 P(w k |w 1:k−1 ) (3.4)
+P(the|Walden Pond's water is so transparent that) (3.5)
+we approximate it with the probability
+P(the|that) (3.6)
+P(w n |w 1:n−1 ) ≈ P(w n |w n−1 ) (3.7)
+P(w n |w 1:n−1 ) ≈ P(w n |w n−N+1:n−1 ) (3.8)
+P(w 1:n ) ≈ n k=1 P(w k |w k−1 ) (3.9)
+P(w n |w n−1 ) = C(w n−1 w n ) w C(w n−1 w) (3.10)
+P(w n |w n−1 ) = C(w n−1 w n ) C(w n−1 ) (3.11)
+P(w n |w n−N+1:n−1 ) = C(w n−N+1:n−1 w n ) C(w n−N+1:n−1 ) (3.12)
+p 1 × p 2 × p 3 × p 4 = exp(log p 1 + log p 2 + log p 3 + log p 4 ) (3.13)
+PP(W ) = P(w 1 w 2 . . . w N ) − 1 N (3.14) = N 1 P(w 1 w 2 . . . w N )
+PP(W ) = N N i=1 1 P(w i |w 1 . . . w i−1 ) (3.15)
+PP(W ) = N N i=1 1 P(w i |w i−1 ) (3.16)
+PP(W ) = P(w 1 w 2 . . . w N ) − 1 N = ( 1 10 N ) − 1 N = 1 10 −1 = 10 (3.17)
+(3.19) @username R u a wizard or wat gan sef: in d mornin -u tweet, afternoon -u tweet, nyt gan u dey tweet. beta get ur IT placement wiv twitter
+P(w i ) = c i N
+P Laplace (w i ) = c i + 1 N +V (3.20)
+c * i = (c i + 1) N N +V (3.21)
+d c = c * c
+P(w n |w n−1 ) = C(w n−1 w n ) C(w n−1 ) (3.22)
+P * Laplace (w n |w n−1 ) = C(w n−1 w n ) + 1 w (C(w n−1 w) + 1) = C(w n−1 w n ) + 1 C(w n−1 ) +V (3.23) 3.5
+c * (w n−1 w n ) = [C(w n−1 w n ) + 1] ×C(w n−1 ) C(w n−1 ) +V (
+add-k P * Add-k (w n |w n−1 ) = C(w n−1 w n ) + k C(w n−1 ) + kV (3.25)
+λ :P (w n |w n−2 w n−1 ) = λ 1 P(w n ) +λ 2 P(w n |w n−1 ) +λ 3 P(w n |w n−2 w n−1 ) (3.26)
+The λ s must sum to 1, making Eq. 3.26 equivalent to a weighted average:
+i λ i = 1 (3.27)
+P(w n |w n−2 w n−1 ) = λ 1 (w n−2:n−1 )P(w n ) +λ 2 (w n−2:n−1 )P(w n |w n−1 ) + λ 3 (w n−2:n−1 )P(w n |w n−2 w n−1 ) (3.28)
+This kind of backoff with discounting is also called Katz backoff. In Katz back-
+P BO (w n |w n−N+1:n−1 ) =    P * (w n |w n−N+1:n−1 ), if C(w n−N+1:n ) > 0 α(w n−N+1:n−1 )P BO (w n |w n−N+2:n−1 ), otherwise. (3.29)
+Katz backoff is often combined with a smoothing method called Good-Turing.
+The combined Good-Turing backoff algorithm involves quite detailed computation for estimating the Good-Turing smoothing and the P * and α values.
+Kneser-Ney 1998).
+P AbsoluteDiscounting (w i |w i−1 ) = C(w i−1 w i ) − d v C(w i−1 v) + λ (w i−1 )P(w i ) (3.30)
+P CONTINUATION (w) ∝ |{v : C(vw) > 0}| (3.31)
+P CONTINUATION (w) = |{v : C(vw) > 0}| |{(u , w ) : C(u w ) > 0}| (3.32)
+P CONTINUATION (w) ∝ |{v : C(vw) > 0}| (3.33)
+normalized by the number of words preceding all words, as follows:
+P CONTINUATION (w) = |{v : C(vw) > 0}| w |{v : C(vw ) > 0}| (3.34)
+The final equation for Interpolated Kneser-Ney smoothing for bigrams is then:
+Interpolated Kneser-Ney P KN (w i |w i−1 ) = max(C(w i−1 w i ) − d, 0) C(w i−1 ) + λ (w i−1 )P CONTINUATION (w i ) (3.35)
+The λ is a normalizing constant that is used to distribute the probability mass we've discounted.:
+λ (w i−1 ) = d v C(w i−1 v) |{w : C(w i−1 w) > 0}| (3.36) The first term, d v C(w i−1 v)
+EQUATION
+P KN (w) = max(c KN (w) − d, 0) w c KN (w ) + λ ( ) 1 V (3.39)
+Some example 4-grams from the Google Web corpus:
+S(w i |w i−k+1 : i−1 ) =    count(w i−k+1 : i ) count(w i−k+1 : i−1 ) if count(w i−k+1 : i ) > 0 λ S(w i |w i−k+2 : i−1 ) otherwise (3.40)
+The backoff terminates in the unigram, which has probability S(w) = count(w)
+. Brants et al. (2007) find that a value of 0.4 worked well for λ .
+H(X) = − x∈χ p(x) log 2 p(x) (3.41)
+H(X) = − i=8 i=1 p(i) log p(i) = − 1 2 log 1 2 − 1 4 log 1 4 − 1 8 log 1 8 − 1 16 log 1 16 −4( 1 64 log 1 64 ) = 2 bits (3.42)
+H(X) = − i=8 i=1 1 8 log 1 8 = − log 1 8 = 3 bits (3.43)
+H(w 1 , w 2 , . . . , w n ) = − w 1 : n ∈L p(w 1 : n ) log p(w 1 : n ) (3.44)
+1 n H(w 1 : n ) = − 1 n w 1 : n ∈L p(w 1 : n ) log p(w 1 : n ) (3.45)
+H(L) = lim n→∞ 1 n H(w 1 , w 2 , . . . , w n ) = − lim n→∞ 1 n W ∈L p(w 1 , . . . , w n ) log p(w 1 , . . . , w n ) (3.46)
+H(L) = lim n→∞ − 1 n log p(w 1 w 2 . . . w n ) (3.47)
+H(p, m) = lim n→∞ − 1 n W ∈L p(w 1 , . . . , w n ) log m(w 1 , . . . , w n ) (3.48)
+Again, following the Shannon-McMillan-Breiman theorem, for a stationary ergodic process:
+H(p, m) = lim n→∞ − 1 n log m(w 1 w 2 . . . w n ) (3.49)
+H(p) ≤ H(p, m) (3.50)
+M = P(w i |w i−N+1 : i−1 ) on a sequence of words W is H(W ) = − 1 N log P(w 1 w 2 . . . w N ) (3.51)
+Perplexity(W ) = 2 H(W ) = P(w 1 w 2 . . . w N ) − 1 N = N 1 P(w 1 w 2 . . . w N ) = N N i=1 1 P(w i |w 1 . . . w i−1 ) (3.52)
+(d 1 , c 1 ), ...., (d N , c N ).
+P(x|y) = P(y|x)P(x) P(y) (4.2)
+We can then substitute Eq. 4.2 into Eq. 4.1 to get Eq. 4.3:
+c = argmax c∈C P(c|d) = argmax c∈C P(d|c)P(c) P(d) (4.3) 4.1 • NAIVE BAYES CLASSIFIERS 59
+P(d)
+c = argmax c∈C P(c|d) = argmax c∈C P(d|c)P(c) (4.4)
+prior probability likelihoodĉ = argmax c∈C likelihood P(d|c) prior P(c) (4.5)
+Without loss of generalization, we can represent a document d as a set of features
+f 1 , f 2 , ..., f n :ĉ = argmax c∈C likelihood P( f 1 , f 2 , ...., f n |c) prior P(c) (4.6)
+P( f 1 , f 2 , ...., f n |c) = P( f 1 |c) • P( f 2 |c) • ... • P( f n |c) (4.7)
+c NB = argmax c∈C P(c) f ∈F P( f |c) (4.8)
+positions ← all word positions in test document
+Naive Bayes calculations, like calculations for language modeling, are done in log
+space, to avoid underflow and increase speed. Thus Eq. 4.9 is generally instead
+expressed as:
+By considering features in log space, Eq. 4.10 computes the predicted class as a lin-
+to make a classification decision —like naive Bayes and also logistic regression—
+are called linear classifiers.
+P(c) = N c N doc (4.11)
+P(w i |c) = count(w i , c) w∈V count(w, c) (4.12)
+w∈V count(w, positive) = 0 (4.13)
+(w i |c) = count(w i , c) + 1 w∈V (count(w, c) + 1) = count(w i , c) + 1 w∈V count(w, c) + |V | (4.14)
+function TRAIN NAIVE BAYES(D, C) returns log P(c) and log P(w|c)
+|+) = 1 + 1 9 + 20
+P(−)P(S|−) = 3 5 × 2 × 2 × 1 34 3 = 6.1 × 10 −5 P(+)P(S|+) = 2 5 × 1 × 1 × 2 29 3 = 3.2 × 10 −5
+The model thus predicts the class negative for the test sentence.
+P(s|c) = i∈positions P(w i |c) (4.15)
+w P(w|+) P(w|-) I 0.1 0.2 love 0.1 0.001 this 0.01 0.01 fun 0.05 0.005 film 0.1 0.1 ... ... ...
+F β = (β 2 + 1)PR
+F1 F 1 = 2PR P + R (4.16)
+HarmonicMean(a 1 , a 2 , a 3 , a 4 , ..., a n ) = n 1 a 1 + 1 a 2 + 1 a 3 + ... + 1 a n (4.17)
+and hence F-measure is
+F = 1 α 1 P + (1 − α) 1 R or with β 2 = 1 − α α F = (β 2 + 1)PR β 2 P + R (4.18)
+δ (x) = M(A, x) − M(B, x) (4.19)
+H 0 : δ (x) ≤ 0 H 1 : δ (x) > 0 (4.20)
+P(δ (X) ≥ δ (x)|H 0 is true) (4.21)
+x AB A B AB AB A B AB A B AB A B A B .70 .50 .20 x (1) A B AB A B AB AB A B AB AB A B AB .60 .60 .00 x (2) A B AB A B AB AB AB AB A B AB AB .60 .70 -.10 ... x (b)
+p-value(x) = 1 b b i=1 1 δ (x (i) ) − δ (x) ≥ 0
+p-value(x) = 1 b b i=1 1 δ (x (i) ) − δ (x) ≥ δ (x) = 1 b b i=1 1 δ (x (i) ) ≥ 2δ (x) (4.22)
+function BOOTSTRAP(test set x, num of samples b) returns p-value(x)
+x (i) Calculate δ (x (i) ) # how much better does algorithm A do than B on x (i) s ← s + 1 if δ (x (i) ) ≥ 2δ (x) p-value(x) ≈ s
+δ (x * (i) ) > 2δ (x)
+. This percentage then acts as a one-sided empirical p-value
+• Many language processing tasks can be viewed as tasks of classification.
+A generative model like naive Bayes makes use of this likelihood term, w which
+Logistic regression has two phases:
+z = n i=1 w i x i + b (5.2)
+z = w • x + b (5.3)
+σ (z) = 1 1 + e −z = 1 1 + exp (−z) (5.4)
+P(y = 1) = σ (w • x + b) = 1 1 + exp (−(w • x + b)) P(y = 0) = 1 − σ (w • x + b) = 1 − 1 1 + exp (−(w • x + b)) = exp (−(w • x + b)) 1 + exp (−(w • x + b)) (5.5)
+The sigmoid function has the property
+1 − σ (x) = σ (−x) (5.6)
+so we could also have expressed P(y = 0) as σ (−(w • x + b)).
+decision boundary decision(x) = 1 if P(y = 1|x) > 0.5, 0 otherwise
+x 4 count(1st and 2nd pronouns ∈ doc) 3
+x 5 1 if "!" ∈ doc 0 otherwise 0
+x 6 log(word count of doc) ln(66) = 4.19
+Given these 6 features and the input review x, P(+|x) and P(−|x) can be computed using Eq. 5.5:
+p(+|x) = P(y = 1|x) = σ (w • x + b) = σ ([2.5, −5.0, −1.2, 0.5, 2.0, 0.7] • [3, 2, 1, 3, 0, 4.19] + 0.1) = σ (.833) = 0.70 (5.7) p(−|x) = P(y = 0|x) = 1 − σ (w • x + b) = 0.30
+x 1 = 1 if "Case(w i ) = Lower" 0 otherwise
+x 2 = 1 if "w i ∈ AcronymDict" 0 otherwise x 3 = 1 if "w i = St. & Case(w i−1 ) = Cap" 0 otherwise
+the cross-entropy loss.
+(5.8)
+p(y|x) =ŷ y (1 −ŷ) 1−y (5.9)
+log p(y|x) = log ŷ y (1 −ŷ) 1−y = y logŷ + (1 − y) log(1 −ŷ) (5.10)
+L CE (ŷ, y) = − log p(y|x) = − [y logŷ + (1 − y) log(1 −ŷ)] (5.11)
+Finally, we can plug in the definition ofŷ = σ (w • x + b):
+L CE (ŷ, y) = − [y log σ (w • x + b) + (1 − y) log (1 − σ (w • x + b))] (5.12)
+L CE (ŷ, y) = −[y log σ (w • x + b) + (1 − y) log (1 − σ (w • x + b))] = − [log σ (w • x + b)] = − log(.70) = .36
+L CE (ŷ, y) = −[y log σ (w • x + b)+(1 − y) log (1 − σ (w • x + b))] = − [log (1 − σ (w • x + b))] = − log (.30) = 1.2
+= argmin θ 1 m m i=1 L CE ( f (x (i) ; θ ), y (i) ) (5.13)
+w t+1 = w t − η d dw L( f (x; w), y) (5.14)
+∇ θ L( f (x; θ ), y)) =         ∂ ∂ w 1 L( f (x; θ ), y) ∂ ∂ w 2 L( f (x; θ ), y) . . . ∂ ∂ w n L( f (x; θ ), y) ∂ ∂ b L( f (x; θ ), y)         (5.15)
+The final equation for updating θ based on the gradient is thus
+θ t+1 = θ t − η∇L( f (x; θ ), y) (5.16)
+L CE (ŷ, y) = − [y log σ (w • x + b) + (1 − y) log (1 − σ (w • x + b))] (5.17)
+∂ L CE (ŷ, y) ∂ w j = [σ (w • x + b) − y]x j (5.18)
+x (1) , x (2) , ..., x (m) #
+y (i) ? 2. g ← ∇ θ L( f (x (i) ; θ ), y (i) )
+x 1 = 3 (count of positive lexicon words)
+w 1 = w 2 = b = 0 η = 0.1
+θ t+1 = θ t − η∇ θ L( f (x (i) ; θ ), y (i) )
+∇ w,b L =    ∂ L CE (ŷ,y) ∂ w 1 ∂ L CE (ŷ,y) ∂ w 2 ∂ L CE (ŷ,y) ∂ b    =   (σ (w • x + b) − y)x 1 (σ (w • x + b) − y)x 2 σ (w • x + b) − y   =   (σ (0) − 1)x 1 (σ (0) − 1)x 2 σ (0) − 1   =   −0.5x 1 −0.5x 2 −0.5   =   −1.5 −1.0 −0.5  
+θ 1 =   w 1 w 2 b   − η   −1.5 −1.0 −0.5   =   .15 .1 .05  
+log p(training labels) = log m i=1 p(y (i) |x (i) ) = m i=1 log p(y (i) |x (i) ) = − m i=1 L CE (ŷ (i) , y (i) ) (5.19)
+Cost(ŷ, y) = 1 m m i=1 L CE (ŷ (i) , y (i) ) = − 1 m m i=1 y (i) log σ (w • x (i) + b) + (1 − y (i) ) log 1 − σ (w • x (i) + b) (5.20)
+The mini-batch gradient is the average of the individual gradients from Eq. 5.18:
+∂Cost(ŷ, y) ∂ w j = 1 m m i=1 σ (w • x (i) + b) − y (i) x (i) j (5.21)
+Numquam ponenda est pluralitas sine necessitate 'Plurality should never be proposed unless needed'
+θ = argmax θ m i=1 log P(y (i) |x (i) ) − αR(θ ) (5.22)
+R(θ ) = ||θ || 2 2 = n j=1 θ 2 j (5.23)
+The L2 regularized objective function becomes:
+θ = argmax θ m i=1 log P(y (i) |x (i) ) − α n j=1 θ 2 j (5.24)
+R(θ ) = ||θ || 1 = n i=1 |θ i | (5.25)
+The L1 regularized objective function becomes:
+θ = argmax θ m 1=i log P(y (i) |x (i) ) − α n j=1 |θ j | (5.26)
+2πσ 2 j exp − (θ j − µ j ) 2 2σ 2 j (5.27)
+θ = argmax θ M i=1 P(y (i) |x (i) ) × n j=1 1 2πσ 2 j exp − (θ j − µ j ) 2 2σ 2 j (5.28)
+which in log space, with µ = 0, and assuming 2σ 2 = 1, corresponds tô
+θ = argmax θ m i=1 log P(y (i) |x (i) ) − α n j=1 θ 2 j (5.29)
+which is in the same form as Eq. 5.24.
+For a vector z of dimensionality k, the softmax is defined as:
+softmax(z i ) = exp (z i ) k j=1 exp (z j ) 1 ≤ i ≤ k (5.30)
+The softmax of an input vector z = [z 1 , z 2 , ..., z k ] is thus a vector itself:
+softmax(z) = exp (z 1 ) k i=1 exp (z i ) , exp (z 2 ) k i=1 exp (z i ) , ..., exp (z k ) k i=1 exp (z i ) (5.31)
+z = [0.6, 1.1, −1.5, 1.2, 3.2, −1.1]
+p(y = c|x) = exp (w c • x + b c ) K j=1 exp (w j • x + b j ) (5.32)
+x 5 = 1 if "!" ∈ doc 0 otherwise
+Feature Definition w 5,+ w 5,− w 5,0 f 5 (x) 1 if "!" ∈ doc 0 otherwise 3.5 3.1 −5.3
+L CE (ŷ, y) = − log p(y|x) = − [y logŷ + (1 − y) log(1 −ŷ)] (5.33)
+L CE (ŷ, y) = − K k=1 y k logŷ k = − K k=1 y k logp(y = k|x) (5.34)
+L CE (ŷ, y) = − K k=1 1{y = k} logp(y = k|x) = − K k=1 1{y = k} log exp (w k • x + b k ) K j=1 exp (w j • x + b j ) (5.35)
+negative log likelihood loss L CE (ŷ, y) = − logŷ k , (where k is the correct class) = − log exp (w k • x + b k ) K j=1 exp (w j • x + b j ) (
+where k is the correct class)(5.36)
+∂ L CE ∂ w k,i = −(1{y = k} − p(y = k|x))x i = − 1{y = k} − exp (w k • x + b k ) K j=1 exp (w j • x + b j ) x i (5.37)
+d dx ln(x) = 1 x (5.38)
+Second, the (very elegant) derivative of the sigmoid:
+dσ (z) dz = σ (z)(1 − σ (z))
+d f dx = du dv • dv dx (5.40)
+∂ L CE ∂ w j = ∂ ∂ w j − [y log σ (w • x + b) + (1 − y) log (1 − σ (w • x + b))] = − ∂ ∂ w j y log σ (w • x + b) + ∂ ∂ w j (1 − y) log [1 − σ (w • x + b)] (5.41)
+Next, using the chain rule, and relying on the derivative of log:
+∂ L CE ∂ w j = − y σ (w • x + b) ∂ ∂ w j σ (w • x + b) − 1 − y 1 − σ (w • x + b) ∂ ∂ w j 1 − σ (w • x + b) (5.42)
+Rearranging terms:
+∂ L CE ∂ w j = − y σ (w • x + b) − 1 − y 1 − σ (w • x + b) ∂ ∂ w j σ (w • x + b) (5.43)
+∂ L CE ∂ w j = − y − σ (w • x + b) σ (w • x + b)[1 − σ (w • x + b)] σ (w • x + b)[1 − σ (w • x + b)] ∂ (w • x + b) ∂ w j = − y − σ (w • x + b) σ (w • x + b)[1 − σ (w • x + b)] σ (w • x + b)[1 − σ (w • x + b)]x j = −[y − σ (w • x + b)]x j = [σ (w • x + b) − y]x j (5.44)
+This chapter introduced the logistic regression model of classification.
+庄子(Zhuangzi), Chapter 26
+In Chapter 18 we'll introduce more relations between senses like hypernymy or IS-A, antonymy (opposites) and meronymy (part-whole relations).
+dot product inner product dot product(v, w) = v • w = N i=1 v i w i = v 1 w 1 + v 2 w 2 + ... + v N w N (6.7)
+vector length |v| = N i=1 v 2 i (6.8)
+a • b = |a||b| cos θ a • b |a||b| = cos θ (6.9)
+cosine cosine(v, w) = v • w |v||w| = N i=1 v i w i N i=1 v 2 i N i=1 w 2 i (6.10)
+tf t, d = count(t, d) (6.11)
+2 tf t, d = log 10 (count(t, d) + 1) (6.12)
+Collection Frequency Document Frequency Romeo 113 1 action 113 31
+idf t = log 10 N df t (6.13)
+w t, d = tf t, d × idf t (6.14)
+I(x, y) = log 2 P(x, y) P(x)P(y) (6.16)
+PMI(w, c) = log 2 P(w, c) P(w)P(c) (6.17)
+PPMI(w, c) = max(log 2 P(w, c) P(w)P(c) , 0) (6.18)
+I(X,Y ) = x y P(x, y) log 2 P(x, y) P(x)P(y) (6.15)
+p i j = f i j W i=1 C j=1 f i j , p i * = C j=1 f i j W i=1 C j=1 f i j , p * j = W i=1 f i j W i=1 C j=1 f i j (6.19) PPMI i j = max(log 2 p i j p i * p * j , 0) (6.20)
+PPMI α (w, c) = max(log 2 P(w, c) P(w)P α (c) , 0) (6.21) P α (c) = count(c) α c count(c) α (6.22)
+document vector d = w 1 + w 2 + ... + w k k (6.23)
+... lemon, a [tablespoon of apricot jam, a] pinch ... c1 c2 w c3 c4
+P(+|w, c) (6.24)
+P(−|w, c) = 1 − P(+|w, c) (6.25)
+Similarity(w, c) ≈ c • w (6.26)
+σ (x) = 1 1 + exp (−x) (6.27) 6.8 • WORD2VEC 115
+P(+|w, c) = σ (c • w) = 1 1 + exp (−c • w) (6.28)
+P(−|w, c) = 1 − P(+|w, c) = σ (−c • w) = 1 1 + exp (c • w) (6.29)
+P(+|w, c 1:L ) = L i=1 σ (c i • w) (6.30) log P(+|w, c 1:L ) = L i=1 log σ (c i • w) (6.31)
+... lemon, a [tablespoon of apricot jam, a] pinch ... c1 c2 w c3 c4
+positive examples + w c
+P α (w) = count(w) α w count(w ) α (6.32)
+P
+L CE = − log P(+|w, c pos ) k i=1 P(−|w, c neg i ) = − log P(+|w, c pos ) + k i=1 log P(−|w, c neg i ) = − log P(+|w, c pos ) + k i=1 log 1 − P(+|w, c neg i ) = − log σ (c pos • w) + k i=1 log σ (−c neg i • w) (6.34)
+∂ L CE ∂ c pos = [σ (c pos • w) − 1]w (6.35) ∂ L CE ∂ c neg = [σ (c neg • w)]w (6.36) ∂ L CE ∂ w = [σ (c pos • w) − 1]c pos + k i=1 [σ (c neg i • w)]c neg i (6.37)
+are thus:
+c t+1 pos = c t pos − η[σ (c t pos • w t ) − 1]w t (6.38) c t+1 neg = c t neg − η[σ (c t neg • w t )]w t (6.39) w t+1 = w t − η [σ (c pos • w t ) − 1]c pos + k i=1 [σ (c neg i • w t )]c neg i (6.40)
+b * = argmin x distance(x, a * − a + b) (6.41)
+with some distance function, such as Euclidean distance.
+hen +female, +chicken, +adult rooster -female, +chicken, +adult chick +chicken, -adult
+z = b + i w i x i (7.1)
+z = w • x + b (7.2)
+y = a = f (z)
+sigmoid y = σ (z) = 1 1 + e −z (7.3)
+EQUATION
+x 1 x 2 x 3 y w 1 w 2 w 3 ∑ b σ +1
+w = [0.2, 0.3, 0.9] b = 0.5
+What would this unit do with the following input vector:
+x = [0.5, 0.6, 0.1]
+The resulting output y would be:
+y = σ (w • x + b) = 1 1 + e −(w•x+b) = 1
+1 + e −(.5 * .2+.6 * .3+.1 * .9+.5) = 1 1 + e −0.87 = .70
+y =
+e z − e −z e z + e −z (7.5)
+y = max(z, 0) (7.6)
+AND OR XOR x1 x2 y x1 x2 y x1 x2 y 0 0 0 0 0 0 0 0 0 0 1 0 0 1 1 0 1 1 1 0 0 1 0 1 1 0 1 1 1 1 1 1 1 1 1 0
+y = 0, if w • x + b ≤ 0 1, if w • x + b > 0 (7.7)
+EQUATION
+x 2 = (−w 1 /w 2 )x 1 + (−b/w 2 )
+x 1 x 2 h 1 h 2 y 1 +1 1 -1 1 1 1 -2 0 1 +1 0 Figure 7
+h = σ (Wx + b) (7.8)
+g[z 1 , z 2 , z 3 ] = [g(z 1 ), g(z 2 ), g(z 3 )].
+n 0 i=1 W ji x i + b j .
+softmax(z i ) = exp(z i ) d j=1 exp(z j ) 1 ≤ i ≤ d (7.9)
+Thus for example given a vector
+EQUATION
+h = σ (Wx + b) z = Uh y = softmax(z) (7.12)
+Thus we can re-represent our 2-layer net from Eq. 7.12 as follows:
+z [1] = W [1] a [0] + b [1]
+a [1] = g [1] (z [1] )
+z [2] = W [2] a [1] + b [2]
+a [2] = g [2] (z [2] ) y = a [2] (7.13)
+for i in 1..n z [i] = W [i] a [i−1] + b [i]
+z [1] = W [1] x + b [1] z [2] = W [2] z [1] + b [2]
+We can rewrite the function that the network is computing as: [2] = W [2] (W [1] x + b [1]
+z [2] = W [2] z [1] + b
+) + b [2] = W [2] W [1] x + W [2] b [1] + b [2] = W x + b (7.14)
+h = σ (Wx) (7.16)
+h j = σ n 0 i=1 W ji x i + b j , (7.17)
+we'll instead use:
+σ n 0 i=0 W ji x i , (7.18)
+EQUATION
+x = vector of hand-designed features
+h = σ (Wx + b) z = Uh y = softmax(z) (7.19)
+P(w t |w 1 , . . . , w t−1 ) ≈ P(w t |w t−N+1 , . . . , w t−1 ) (7.21)
+Let's walk through forward inference or decoding for neural language models.
+L CE (ŷ, y) = − log p(y|x) = − [y logŷ + (1 − y) log(1 −ŷ)] (7.23)
+L CE (ŷ, y) = − C i=1 y i logŷ i (7.24)
+L CE (ŷ, y) = − K k=1 1{y = k} logŷ i = − K k=1 1{y = k} logp(y = k|x) = − K k=1 1{y = k} log exp(z k ) K j=1 exp(z j ) (7.25)
+L CE (ŷ, y) = − log exp(z i ) K j=1 exp(z j )
+(where i is the correct class) (7.27)
+∂ L CE (w, b) ∂ w j = (ŷ − y) x j = (σ (w • x + b) − y) x j (7.28)
+∂ L CE ∂ w k = −(1{y = k} − p(y = k|x))x k = − 1{y = k} − exp(w k • x + b k ) K j=1 exp(w j • x + b j ) x k (7.29)
+d = 2 * b e = a + d L = c * e
+d f dx = du dv • dv dx (7.30)
+d f dx = du dv • dv dw • dw dx (7.31)
+∂ L ∂ c = e (7.32)
+∂ L ∂ a = ∂ L ∂ e ∂ e ∂ a ∂ L ∂ b = ∂ L ∂ e ∂ e ∂ d ∂ d ∂ b (7.33)
+Eq. 7.33 and Eq. 7.32 thus require five intermediate derivatives:
+∂ L ∂ e , ∂ L ∂ c , ∂ e ∂ a ,
+d = 2b : ∂ d ∂ b = 2
+∂ L ∂ d
+z [1] = W [1] x + b [1]
+a [1] = ReLU(z [1] )
+z [2] = W [2] a [1] + b [2]
+a [2] = σ (z [2] ) y = a [2] (7.34)
+L CE (ŷ, y) = − [y logŷ + (1 − y) log(1 −ŷ)] (7.35)
+EQUATION
+dσ (z) dz = σ (z)(1 − σ (z)) (7.37)
+d tanh(z) dz = 1 − tanh 2 (z) (7.38)
+The derivative of the ReLU is
+d ReLU(z) dz = 0 f or z < 0 1 f or z ≥ 0 (7.39)
+∂ L ∂ z = ∂ L ∂ a [2]
+∂ a [2] ∂ z (7.40)
+So let's first compute ∂ L ∂ a [2] , taking the derivative of Eq. 7.36, repeated here:
+L CE (a [2] , y) = − y log a [2] 2] (7.41)
++ (1 − y) log(1 − a [2] ) ∂ L ∂ a [2] = − y ∂ log(a [2] ) ∂ a [2] + (1 − y) ∂ log(1 − a [2] ) ∂ a [2] = − y 1 a [2] + (1 − y) 1 1 − a [2] (−1) = − y a [2] + y − 1 1 − a [
+∂ L ∂ a [2] = a [
+∂ L ∂ z = ∂ L ∂ a [2] ∂ a [2] ∂ z = − y a [2] + y − 1 1 − a [2] a [2] (1 − a [2] ) = a [2] − y (7.42)
+L CE (ŷ, y) = − logŷ i , (where i is the correct class) (7.43)
+L CE = − log p(w t |w t−1 , ..., w t−n+1 ) (7.44)
+θ s+1 = θ s − η ∂ [− log p(w t |w t−1 , ..., w t−n+1 )] ∂ θ (7.45)
+[ PER Jane Villanueva ] of [ ORG United] ,
+Words IO
+P(q i = a|q 1 ...q i−1 ) = P(q i = a|q i−1 ) (8.3)
+Formally, a Markov chain is specified by the following components:
+Q = q 1 q 2 . . . q N a set of N states A = a 11 a 12 . . . a N1 .
+n j=1 a i j = 1 ∀i π = π 1 , π 2 , ..., π N
+Q = q 1 q 2 . . . q N a set of N states A = a 11 . . . a i j .
+s.t. N j=1 a i j = 1 ∀i O = o 1 o 2 . . . o T
+a sequence of T observations, each one drawn from a vocabulary
+V = v 1 , v 2 , ..., v V B = b i (o t )
+π = π 1 , π 2 , ..., π N
+Markov Assumption: P(q i |q 1 , ..., q i−1 ) = P(q i |q i−1 ) (8.6)
+Output Independence: P(o i |q 1 , . . . q i , . . . , q T , o 1 , . . . , o i , . . . , o T ) = P(o i |q i ) (8.7)
+P(t i |t i−1 ) = C(t i−1 ,t i ) C(t i−1 ) (8.8)
+P(V B|MD) = C(MD,V B) C(MD) = 10471 13124 = .80 (8.9)
+P(w i |t i ) = C(t i , w i ) C(t i ) (8.10)
+P(will|MD) = C(MD, will) C(MD) = 4046 13124 = .31 (8.11)
+1:n = argmax t 1 ... t n P(t 1 . . .t n |w 1 . . . w n ) (8.12)
+t 1:n = argmax t 1 ... t n P(w 1 . . . w n |t 1 . . .t n )P(t 1 . . .t n ) P(w 1 . . . w n ) (8.13)
+Furthermore, we simplify Eq. 8.13 by dropping the denominator P(w n 1 ):
+t 1:n = argmax t 1 ... t n P(w 1 . . . w n |t 1 . . .t n )P(t 1 . . .t n ) (8.14)
+P(w 1 . . . w n |t 1 . . .t n ) ≈ n i=1 P(w i |t i ) (8.15)
+P(t 1 . . .t n ) ≈ n i=1 P(t i |t i−1 ) (8.16)
+t 1 ... t n P(t 1 . . .t n |w 1 . . . w n ) ≈ argmax t 1 ... t n n i=1 emission P(w i |t i ) transition P(t i |t i−1 ) (8.17)
+The decoding algorithm for HMMs is the Viterbi algorithm shown in Fig. 8 .10.
+; initialization step viterbi[s,1] ← π s * b s (o 1 ) backpointer[s,1] ← 0
+1 to N do viterbi[s,t] ← N max s =1 viterbi[s ,t − 1] * a s ,s * b s (o t ) backpointer[s,t] ← N argmax s =1 viterbi[s ,t − 1] * a s ,s * b s (o t ) bestpathprob ← N max s=1 viterbi[s, T ] ; termination step bestpathpointer ← N argmax s=1 viterbi[s, T ] ; termination step
+v t ( j) = max q 1 ,...,q t−1 P(q 1 ...q t−1 , o 1 , o 2 . . . o t , q t = j|λ ) (8.18)
+q 1 ,...,q t−1
+v t ( j) is computed as v t ( j) = N max i=1 v t−1 (i) a i j b j (o t ) (8.19)
+Y = argmax Y p(Y |X) = argmax Y p(X|Y )p(Y ) = argmax Y i p(x i |y i ) i p(y i |y i−1 ) (8.21)
+Y = argmax Y ∈Y P(Y |X) (8.22)
+p(Y |X) = exp K k=1 w k F k (X,Y ) Y ∈Y exp K k=1 w k F k (X,Y ) (8.23)
+p(Y |X) = 1 Z(X) exp K k=1 w k F k (X,Y ) (8.24) Z(X) = Y ∈Y exp K k=1 w k F k (X,Y ) (8.25)
+F k (X,Y ) = n i=1 f k (y i−1 , y i , X, i) (8.26)
+1{x i = the, y i = DET} 1{y i = PROPN, x i+1 = Street, y i−1 = NUM} 1{y i = VERB, y i−1 = AUX}
+y i , x i , y i , y i−1 , y i , x i−1 , x i+2
+prefix(x i ) = w prefix(x i ) = we suffix(x i ) = ed suffix(x i ) = d word-shape(x i ) = xxxx-xxxxxxx short-word-shape(x i ) = x-x
+prefix(x i ) = L suffix(x i ) = tane prefix(x i ) = L' suffix(x i ) = ane prefix(x i ) = L'O suffix(x i ) = ne prefix(x i ) = L'Oc
+Y = argmax Y ∈Y P(Y |X) = argmax Y ∈Y 1 Z(X) exp K k=1 w k F k (X,Y ) (8.27) = argmax Y ∈Y exp K k=1 w k n i=1 f k (y i−1 , y i , X, i) (8.28) = argmax Y ∈Y K k=1 w k n i=1 f k (y i−1 , y i , X, i) (8.29) = argmax Y ∈Y n i=1 K k=1 w k f k (y i−1 , y i , X, i) (8.30)
+v t ( j) = N max i=1 v t−1 (i) a i j b j (o t ); 1 ≤ j ≤ N, 1 < t ≤ T (8.31)
+which is the HMM implementation of
+v t ( j) = N max i=1 v t−1 (i) P(s j |s i ) P(o t |s j ) 1 ≤ j ≤ N, 1 < t ≤ T (8.32)
+v t ( j) = N max i=1 v t−1 (i) K k=1 w k f k (y t−1 , y t , X,t) 1 ≤ j ≤ N, 1 < t ≤ T (8.33)
+1. Yerdeki izin temizlenmesi gerek.
+iz + Noun+A3sg+Pnon+Gen The trace on the floor should be cleaned.
+iz + Noun+A3sg+P2sg+Nom Your finger print is left on (it).
+izin + Noun+A3sg+Pnon+Nom You need permission to enter.
+See Householder (1995) for historical notes on parts of speech, and Sampson (1987) and Garside et al. (1997)
+w t-1 w t-2 w t w t-3 p(doe|…) p(ant|…) p(zebra|…) p(fish|…) … U W
+P(w 1:n ) = n i=1 P(w i |w <i )
+PP θ (w 1:n ) = P θ (w 1:n ) − 1 n = n 1 P θ (w 1:n ) (9.1)
+PP θ (w 1:n ) = n n i=1 1 P θ (w i |w 1:n−1 ) (9.2)
+U V W y t x t h t h t-1
+h t = g(Uh t−1 + Wx t ) (9.3) y t = f (Vh t ) (9.4)
+W ∈ R d h ×d in , U ∈ R d h ×d h , and V ∈ R d out ×d h .
+y t = softmax(Vh t ) (9.5)
+function FORWARDRNN(x, network) returns output sequence y h 0 ← 0 for i ← 1 to LENGTH(x) do h i ← g(Uh i−1 + Wx i ) y i ← f (Vh i ) return y
+Forward inference in a recurrent language model proceeds exactly as described in Section 9.2.1. The input sequence X = [x 1 ; ...; x t ; ...;
+e t = Ex t (9.6) h t = g(Uh t−1 + We t ) (9.7) y t = softmax(Vh t ) (9.8)
+P(w t+1 = i|w 1 , . . . , w t ) = y t [i] (9.9)
+P(w 1:n ) = n i=1 P(w i |w 1:i−1 ) (9.10) = n i=1 y i [w i ] (9.11)
+L CE = − w∈V y t [w] logŷ t [w] (9.12)
+L CE (ŷ t , y t ) = − logŷ t [w t+1 ] (9.13)
+h mean = 1 n n i=1 h i (9.14)
+EQUATION
+RNN 1
+x 1 y 2 y 1 y 3 y n concatenated outputs
+x 2
+RNN 2 RNN 1 x 1 x 2 x 3 x n h n → h 1 ← h n → Softmax FFN h 1 ← Figure 9
+(9.18) The flights the airline was cancelling were full.
+f t = σ (U f h t−1 + W f x t ) (9.19) k t = c t−1 f t (9.20)
+g t = tanh(U g h t−1 + W g x t ) (9.21)
+EQUATION
+c t = j t + k t (9.24)
+o t = σ (U o h t−1 + W o x t ) (9.25) h t = o t tanh(c t )
+score(x i , x j ) = x i • x j (9.27)
+x 3 • x 1 , x 3 • x 2 and x 3 • x 3 .
+α i j = softmax(score(x i , x j )) ∀ j ≤ i (9.28) = exp(score(x i , x j )) i k=1 exp(score(x i , x k )) ∀ j ≤ i (9.29)
+y i = j≤i α i j x j (9.30)
+q i = W Q x i ; k i = W K x i ; v i = W V x i (9.31)
+score(x i , x j ) = q i • k j (9.32)
+y i = j≤i α i j v j (9.33)
+EQUATION
+Q = XW Q ; K = XW K ; V = XW V (9.35)
+SelfAttention(Q, K, V) = softmax QK √ d k V (9.36)
+z = LayerNorm(x + SelfAttn(x)) (9.37) y = LayerNorm(z + FFNN(z)) (9.38)
+µ = 1 d h d h i=1 x i (9.39) σ = 1 d h d h i=1 (x i − µ) 2 (9.40)
+x = (x − µ) σ (9.41)
+LayerNorm = γx + β (9.42)
+W K i , W Q i and W V
+W V i ∈ R d×d v
+MultiHeadAttn(X) = (head 1 ⊕ head 2 ... ⊕ head h )W O (9.43) Q = XW Q i ; K = XW K i ; V = XW V i (9.44) head i = SelfAttention(Q, K, V) (9.45)
+p(y) = p(y 1 )p(y 2 |y 1 )p(y 3 |y 1 , y 2 )...P(y m |y 1 , ..., y m−1 ) (10.7)
+h t = g(h t−1 , x t ) (10.8) y t = f (h t ) (10.9)
+p(y|x) = p(y 1 |x)p(y 2 |y 1 , x)p(y 3 |y 1 , y 2 , x)...P(y m |y 1 , ..., y m−1 , x) (10.10)
+h d 1 h d 2 h d i y 1 y 2 y i c … … …
+h d t = g(ŷ t−1 , h d t−1 , c) (10.11)
+c = h e n h d 0 = c h d t = g(ŷ t−1 , h d t−1 , c) z t = f (h d t ) y t = softmax(z t ) (10.12)
+y t = argmax w∈V P(w|x, y 1 ...y t−1 ) (10.13)
+h d i = g(ŷ i−1 , h d i−1 , c i ) (10.14) h d 1 h d 2 h d i y 1 y 2 y i c 1 c 2 c i … …
+score(h d i−1 , h e j ) = h d i−1 • h e j (10.15)
+α i j = softmax(score(h d i−1 , h e j ) ∀ j ∈ e) = exp(score(h d i−1 , h e j ) k exp(score(h d i−1 , h e k )) (10.16)
+c i = j α i j h e j
+With this, we finally have a fixed-length context vector that takes into account
+needs of the decoder at each step of decoding. Fig. 10.10 illustrates an encoder-
+ci.
+score(h d i−1 , h e j ) = h d t−1 W s h e j
+y t = argmax w∈V P(w|x, y 1 ...y t−1 ) (10.18)
+score(y) = − log P(y|x) = 1 T t i=1 − log P(y i |y 1 , ..., y i−1 , x) (10.20)
+10.6 Encoder-Decoder with Transformers
+EQUATION
+words:
+A vocabulary of 8K to 32K word pieces is commonly used.
+Translations are evaluated along two dimensions:
+Automatic evaluation by Character Overlap: chrF
+chrFβ = (1 + β 2 ) chrP • chrR β 2 • chrP + chrR (10.24)
+For β = 2, that would be:
+chrF2 = 5 • chrP • chrR 4 • chrP + chrR
+We use that to compute the unigram and bigram precisions and recalls: unigram P: 17/17 = 1 unigram R: 17/18 = .944 bigram P: 13/16 = .813 bigram R: 13/17 = .765
+Statstical Significance Testing for MT evals
+chrF: Limitations
+x i •x j |x i ||x j | .
+EQUATION
+q i = W Q x i ; k i = W K x i ; v i = W V x i (11.1)
+y i = n j=i α i j v j (11.2)
+α i j = exp(score i j ) n k=1 exp(score ik ) (11.3) score i j = q i • k j (11.4)
+Q = XW Q ; K = XW K ; V = XW V (11.5)
+SelfAttention(Q, K, V) = softmax QK √ d k V (11.6)
+Please turn your homework ____.
+Please turn _____ homework in.
+• It is replaced with the unique vocabulary token [MASK] .
+y i = softmax(W V h i )
+L(x) = L MLM (x) + L SBO (x) (11.7) L SBO (x) = −logP(x|x s , x e , p x ) (11.8)
+s = FFNN([y s−1 ; y e+1 ; p i−s+1 ]) (11.9) z = softmax(Es) (11.10)
+y i = softmax(W NSP h i )
+The following sections introduce fine-tuning methods for the most common applications including sequence classification, sequence labeling, sentence-pair inference, and span-based operations.
+y = softmax(W C y CLS ) (11.11)
+• Entails a: I'm confused. b: Not all of it is very clear to me.
+y i = softmax(W K z i ) (11.12) t i = argmax k (y i ) (11.13)
+[CLS] Janet will back the bill
+[ LOC Mt. Sanitas ] is in [ LOC Sunshine Canyon] .
+would have the following set of per-word BIO tags.
+(11.14) Mt.
+B-LOC
+Sanitas I-LOC is O in O Sunshine B-LOC Canyon I-LOC . O
+g i j = 1 ( j − i) + 1 j k=i h k (11.15) spanRep i j = [h i ; h j ; g i, j ] (11.16)
+s i = FFNN start (h i ) (11.17) e j = FFNN end (h j ) (11.18) spanRep i j = [s i ; e j ; g i, j ] (11.19)
+g i j = SelfATTN(h i: j ) (11.20)
+y i j = softmax(FFNN(g i j )) (11.21) Contextualized Embeddings (h) Bidirectional Transformer Encoder
+T (T −1) 2
