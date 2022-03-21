@@ -3,6 +3,7 @@
 ###
 
 
+from re import L
 from nltk.tokenize import word_tokenize
 import string
 from datasets import load_dataset
@@ -80,7 +81,7 @@ def verify(word):
     return True
 
 
-def evaluate(predict,true):
+def evaluateF1(predict,true):
 
     predict = [w for w in word_tokenize(predict) if verify(w)]
     true = [w for w in word_tokenize(true) if verify(w)]
@@ -94,6 +95,16 @@ def evaluate(predict,true):
     return 2 * (prec*recall)/(prec+recall)
 
     
+def evaluateEM(predict,true):
+
+    predict = [w for w in word_tokenize(predict) if verify(w)]
+    true = [w for w in word_tokenize(true) if verify(w)]
+    
+    
+    if " ".join(predict) == " ".join(true):
+        return 1
+    else:
+        return 0
 
 def get_answer(model, query, context):
     res = model(query+"\n"+context)
@@ -102,10 +113,10 @@ def get_answer(model, query, context):
 
 
 
-generator = pipeline("text2text-generation", model="allenai/unifiedqa-t5-base")
+generator = pipeline("text2text-generation", model="allenai/unifiedqa-t5-large")
 
 # Load the model and tokenizer from HuggingFace Hub 
-model_name = 'sentence-transformers/multi-qa-MiniLM-L6-cos-v1' #sentence-transformers/multi-qa-MiniLM-L6-cos-v1 sentence-transformers/all-mpnet-base-v2
+model_name = 'sentence-transformers/all-mpnet-base-v2' #sentence-transformers/multi-qa-MiniLM-L6-cos-v1 sentence-transformers/all-mpnet-base-v2
 tokenizer = AutoTokenizer.from_pretrained(model_name) # Your code here
 model = AutoModel.from_pretrained(model_name) # Your code here
 
@@ -114,21 +125,26 @@ questions = load_dataset("GroNLP/ik-nlp-22_slp", "questions")['test']
 
 contexts = list(paragraphs['text']) #[:500]
 
-results = list()
+resultsF1 = list()
+resultsEM = list()
 for question in questions:
     query = question['question']
     true = question['answer']
     best_context = get_context(model, tokenizer, query, contexts)
     predict = get_answer(generator, query, best_context)
-    f1 = evaluate(predict,true)
-    results.append(f1)
+    ### evaluate answers 
+    f1 = evaluateF1(predict,true)
+    em = evaluateEM(predict,true)
+
+    resultsF1.append(f1)
+    resultsEM.append(em)
 
 
+baselineF1 = sum(resultsF1)/len(resultsF1)
+baselineEM = sum(resultsEM)/len(resultsEM)
 
-baseline = sum(results)/len(results)
 
-
-print(baseline)
+print(f"F1: {baselineF1}, EM:{baselineEM}")
 
 
 

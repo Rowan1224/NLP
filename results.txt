@@ -1,0 +1,3 @@
+allenai/unifiedqa-t5-large sentence-transformers/multi-qa-MiniLM-L6-cos-v1 0.4149338232351682
+allenai/unifiedqa-t5-base sentence-transformers/multi-qa-MiniLM-L6-cos-v1 0.39615190782153886
+allenai/unifiedqa-t5-large sentence-transformers/all-mpnet-base-v2 0.4562999815299422
