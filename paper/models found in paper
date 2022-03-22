@@ -1,0 +1,7 @@
+QA：Lewis and Fan 2019
+model consistency with Dual learning： He et al.,2016
+Back translation: Sennrich et al.,2016, adds synthetically generated parrallel data as training examples
+supervised: Edunov et al.,2018
+unsupervised: Lample et al.,2018
+QA: A1-berti et al.(2019)
+QA: Natural Questions(Kwiatkowski et al.,2019)
