@@ -3,7 +3,6 @@ import pandas as pd
 from nltk.tokenize import word_tokenize
 from english_words import english_words_set
 import string
-import re
 
 data = pd.read_csv('Data/slp3ed.csv')
 
