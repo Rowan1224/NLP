@@ -1,3 +1,4 @@
 env
 QA Pairs
 .ipynb_checkpoints
+__pycache__

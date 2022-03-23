@@ -2,7 +2,7 @@ import pandas as pd
 import json
 import re
 from nltk.tokenize import sent_tokenize, word_tokenize
-from question_generation.pipelines import pipeline
+from pipelines import pipeline
 import torch, gc
 
 
@@ -43,11 +43,11 @@ def prepare_input_for_QAgenerator(contexts):
 def main():
 
     
-    df = pd.read_csv('../Data/slp3ed.csv')
-    contexts = df["text"].tolist()
+    # df = pd.read_csv('./Data/slp3ed.csv')
+    # contexts = df["text"].tolist()
 
     contexts = []
-    with open('../Data/clean-contexts.txt', 'r') as f:
+    with open('./Data/clean-contexts.txt', 'r') as f:
         for context in f:
             contexts.append(context)
 
@@ -78,10 +78,10 @@ def main():
         train_data.append(context)
 
 
-    with open('../Data/train_data.json', 'w') as f:
+    with open('./Data/train_data.json', 'w') as f:
         json.dump(train_data, f)
 
-    with open('../Data/failed_contexts.json', 'w') as f:
+    with open('./Data/failed_contexts.json', 'w') as f:
         json.dump(failed_contexts, f)
 
     print(f"train_data: {len(train_data)}")
