@@ -1,11 +1,13 @@
 
 import argparse
+import pandas as pd
 import torch
 from tqdm import tqdm
 from torch.utils.data import DataLoader
 from nltk import word_tokenize
 import string
 from datasets import load_dataset
+import os
 from transformers import (
 
     AlbertForQuestionAnswering,
@@ -21,7 +23,8 @@ def create_arg_parser():
     parser.add_argument("-m", "--model", default='albert', type=str,
                        choices=['bert', 'albert', 'electra'],
                     help='Select the model for evaluation')
-                   
+    parser.add_argument("-b", "--batch", default=4, type=int, help='Provide the number of batch')
+    parser.add_argument("-lr", "--learning_rate", default=5e-5, type=float, help='Provide the learning rate') 
 
     args = parser.parse_args()
     return args
@@ -34,8 +37,8 @@ def verify(word):
 
 def evaluateF1(predict,true):
 
-    predict = [w for w in word_tokenize(predict) if verify(w)]
-    true = [w for w in word_tokenize(true) if verify(w)]
+    predict = [w for w in word_tokenize(predict.lower()) if verify(w)]
+    true = [w for w in word_tokenize(true.lower()) if verify(w)]
     common = [w for w in true if w in predict]
     
     if len(common) == 0:
@@ -48,8 +51,8 @@ def evaluateF1(predict,true):
     
 def evaluateEM(predict,true):
 
-    predict = [w for w in word_tokenize(predict) if verify(w)]
-    true = [w for w in word_tokenize(true) if verify(w)]
+    predict = [w for w in word_tokenize(predict.lower()) if verify(w)]
+    true = [w for w in word_tokenize(true.lower()) if verify(w)]
     
     
     if " ".join(predict) == " ".join(true):
@@ -103,14 +106,19 @@ def get_predictions(model, tokenizer, test_dataset):
 def main():
     
     args = create_arg_parser()
+    batch = args.batch
+    learning_rate = args.learning_rate
+    
+
+    model_args = f"batch_{batch}_lr_{learning_rate}" 
 
     if args.model =='albert':
-        path_to_model = './Models/albert-custom'
+        path_to_model = f'./Models/albert-custom/{model_args}'
         tokenizer = AlbertTokenizerFast.from_pretrained(path_to_model)
         model = AlbertForQuestionAnswering.from_pretrained(path_to_model)
 
     elif args.model == 'bert':
-        path_to_model = './Models/distilBert-custom'
+        path_to_model = f'./Models/distilBert-custom'
         tokenizer = DistilBertTokenizerFast.from_pretrained(path_to_model)
         model = DistilBertForQuestionAnswering.from_pretrained(path_to_model)
 
@@ -134,8 +142,10 @@ def main():
 
     resultsF1 = list()
     resultsEM = list()
-    for predict, true in zip(predictions,answers):
+    output = []
+    for question, context, predict, true in zip(questions, contexts, predictions,answers):
 
+        output.append([question, context, true, predict])
         f1 = evaluateF1(predict,true)
         em = evaluateEM(predict,true)
         resultsF1.append(f1)
@@ -147,6 +157,12 @@ def main():
 
     print(f"F1: {baselineF1}, EM:{baselineEM}")
 
+    df = pd.DataFrame(output,columns=['questions','contexts','answers','predictions'])
+    if os.path.exists(path=path_to_model+"/output/"):
+        df.to_json(path_to_model+"/output/output.json", orient='records')
+    else:
+        os.makedirs(path_to_model+"/output/")
+        df.to_json(path_to_model+"/output/output.json", orient='records')
 
 if __name__ == '__main__':
     main()
