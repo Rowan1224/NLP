@@ -23,6 +23,11 @@ def create_arg_parser():
     parser.add_argument("-m", "--model", default='albert', type=str,
                        choices=['bert', 'albert', 'electra'],
                     help='Select the model for evaluation')
+
+    parser.add_argument("-t", "--type", default='eval', type=str,
+                       choices=['eval', 'base'],
+                    help='Select evaluation type')
+    
     parser.add_argument("-b", "--batch", default=4, type=int, help='Provide the number of batch')
     parser.add_argument("-lr", "--learning_rate", default=5e-5, type=float, help='Provide the learning rate') 
 
@@ -113,14 +118,27 @@ def main():
     model_args = f"batch_{batch}_lr_{learning_rate}" 
 
     if args.model =='albert':
-        path_to_model = f'./Models/albert-custom/{model_args}'
-        tokenizer = AlbertTokenizerFast.from_pretrained(path_to_model)
-        model = AlbertForQuestionAnswering.from_pretrained(path_to_model)
+        if args.type=='eval':
+            path_to_model = f'./Models/albert-custom/{model_args}'
+            tokenizer = AlbertTokenizerFast.from_pretrained(path_to_model)
+            model = AlbertForQuestionAnswering.from_pretrained(path_to_model)
+        else:
+            path_to_model = f'./Models/albert-base-v2'
+        
+            tokenizer = AlbertTokenizerFast.from_pretrained('albert-base-v2')
+            model = AlbertForQuestionAnswering.from_pretrained('albert-base-v2')
 
     elif args.model == 'bert':
-        path_to_model = f'./Models/distilBert-custom'
-        tokenizer = DistilBertTokenizerFast.from_pretrained(path_to_model)
-        model = DistilBertForQuestionAnswering.from_pretrained(path_to_model)
+        
+        if args.type=='eval':
+            path_to_model = f'./Models/distilBert-custom'
+            tokenizer = DistilBertTokenizerFast.from_pretrained(path_to_model)
+            model = AlbertForQuestionAnswering.from_pretrained(path_to_model)
+        else:
+            path_to_model = f'./Models/distilbert-base-uncased'
+        
+            tokenizer = DistilBertTokenizerFast.from_pretrained('distilbert-base-uncased')
+            model = DistilBertForQuestionAnswering.from_pretrained('distilbert-base-uncased')
 
 
 
