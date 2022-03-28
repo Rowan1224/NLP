@@ -7,7 +7,7 @@ from torch.utils.data import DataLoader
 from tqdm import tqdm
 
 from datasets import load_dataset
-from helpers import DomainDataset, check_dir_exists, compute_f1, load_json
+from helpers import DomainDataset, check_dir_exists, compute_em, compute_f1, load_json
 from transformers import (
     AlbertForQuestionAnswering,
     AlbertTokenizerFast,
@@ -89,27 +89,24 @@ def main():
         "albert": {
             "model": AlbertForQuestionAnswering,
             "tokenizer": AlbertTokenizerFast,
-            "model_name": "albert-base-v2",
         },
         "bert": {
             "model": DistilBertForQuestionAnswering,
             "tokenizer": DistilBertTokenizerFast,
-            "model_name": "distilbert-base-uncased",
         },
         "electra": {
             "model": ElectraForQuestionAnswering,
             "tokenizer": ElectraTokenizerFast,
-            "model_name": "Palak/google_electra-base-discriminator_squad",
         },
     }
 
-    model, tokenizer, model_name = model_name_to_class[args.model].values()
-    path_to_model = f"./Models/custom_{model_name}_{model_args}"
+    model, tokenizer = model_name_to_class[args.model].values()
+    path_to_model = f"./models/custom_{args.model}_{model_args}"
 
     tokenizer = tokenizer.from_pretrained(path_to_model)
     model = model.from_pretrained(path_to_model)
 
-    test_qac = load_json("./Data/test_qac.json")
+    test_qac = load_json("./data/test_qac.json")
     test_questions = [pair["question"] for pair in test_qac]
     test_answers = [pair["answer"] for pair in test_qac]
     test_contexts = [pair["context"] for pair in test_qac]
@@ -123,7 +120,7 @@ def main():
     predictions = get_predictions(model, tokenizer, test_dataset)
 
     f1 = compute_f1(test_answers, predictions)
-    em = compute_f1(test_answers, predictions)
+    em = compute_em(test_answers, predictions)
 
     print(f"F1: {f1}")
     print(f"EM: {em}")
@@ -137,8 +134,8 @@ def main():
         }
     )
 
-    check_dir_exists(path=path_to_model + "/output/")
-    df.to_json(path_to_model + "/output/output.json", orient="records")
+    check_dir_exists("./output")
+    df.to_json("./output/output_{args.model}.json", orient="records")
 
 
 if __name__ == "__main__":
