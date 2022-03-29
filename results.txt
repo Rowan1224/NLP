@@ -1,3 +1,13 @@
 allenai/unifiedqa-t5-large sentence-transformers/multi-qa-MiniLM-L6-cos-v1 0.4149338232351682
 allenai/unifiedqa-t5-base sentence-transformers/multi-qa-MiniLM-L6-cos-v1 0.39615190782153886
 allenai/unifiedqa-t5-large sentence-transformers/all-mpnet-base-v2 0.4562999815299422
+
+allenai/unifiedqa-t5-large F1: 0.7452627882509043, EM:0.23728813559322035
+
+albert batch size 8 learning rate 1e-5 F1: 0.48052268076969556, EM:0.11864406779661017
+albert batch size 16 learning rate 1e-5 F1: 0.5430137270734144, EM:0.15254237288135594
+albert batch size 16 learning rate 3e-5 F1: 0.3860364131976677, EM:0.13559322033898305
+albert batch size 4 learning rate 3e-5 F1: F1: 0.5185913872572245, EM:0.15254237288135594
+
+pre-trained albert F1: 0.13582959616159004, EM:0.0
+pre-trained distilbert F1: 0.23296929454787868, EM:0.0

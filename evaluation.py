@@ -8,6 +8,7 @@ from nltk import word_tokenize
 import string
 from datasets import load_dataset
 import os
+from transformers.data.metrics import squad_metrics
 from transformers import (
 
     AlbertForQuestionAnswering,
@@ -161,13 +162,21 @@ def main():
     resultsF1 = list()
     resultsEM = list()
     output = []
+    blank_answers = []
     for question, context, predict, true in zip(questions, contexts, predictions,answers):
 
         output.append([question, context, true, predict])
-        f1 = evaluateF1(predict,true)
-        em = evaluateEM(predict,true)
-        resultsF1.append(f1)
-        resultsEM.append(em)
+
+        if predict=="":
+            blank_answers.append([question, context, true, predict])
+            
+        # f1 = evaluateF1(predict,true)
+        # em = evaluateEM(predict,true)
+        # resultsF1.append(f1)
+        # resultsEM.append(em)
+
+        resultsF1.append(squad_metrics.compute_f1(true,predict))
+        resultsEM.append(squad_metrics.compute_exact(true,predict))
 
 
     baselineF1 = sum(resultsF1)/len(resultsF1)
@@ -176,11 +185,16 @@ def main():
     print(f"F1: {baselineF1}, EM:{baselineEM}")
 
     df = pd.DataFrame(output,columns=['questions','contexts','answers','predictions'])
+    df2 = pd.DataFrame(blank_answers,columns=['questions','contexts','answers','predictions'])
+   
+
     if os.path.exists(path=path_to_model+"/output/"):
         df.to_json(path_to_model+"/output/output.json", orient='records')
+        df2.to_json(path_to_model+"/output/blank.json", orient='records')
     else:
         os.makedirs(path_to_model+"/output/")
         df.to_json(path_to_model+"/output/output.json", orient='records')
+        df2.to_json(path_to_model+"/output/blank.json", orient='records')
 
 if __name__ == '__main__':
     main()
