@@ -21,7 +21,7 @@ def create_arg_parser():
 
     parser = argparse.ArgumentParser()
     parser.add_argument("-m", "--model", default='albert', type=str,
-                       choices=['bert', 'albert', 'electra'],
+                       choices=['bert', 'albert', 'electra', 'bertsquad'],
                     help='Select the model for evaluation')
 
     parser.add_argument("-t", "--type", default='eval', type=str,
@@ -133,13 +133,24 @@ def main():
         if args.type=='eval':
             path_to_model = f'./Models/distilBert-custom'
             tokenizer = DistilBertTokenizerFast.from_pretrained(path_to_model)
-            model = AlbertForQuestionAnswering.from_pretrained(path_to_model)
+            model = DistilBertForQuestionAnswering.from_pretrained(path_to_model)
         else:
             path_to_model = f'./Models/distilbert-base-uncased'
         
             tokenizer = DistilBertTokenizerFast.from_pretrained('distilbert-base-uncased')
             model = DistilBertForQuestionAnswering.from_pretrained('distilbert-base-uncased')
 
+    elif args.model == 'bertsquad':
+
+        if args.type=='eval':
+            path_to_model = f'./Models/distilBert-squad'
+            tokenizer = DistilBertTokenizerFast.from_pretrained(path_to_model)
+            model = DistilBertForQuestionAnswering.from_pretrained(path_to_model)
+        else:
+            path_to_model = f'./Models/distilbert-base-uncased'
+
+            tokenizer = DistilBertTokenizerFast.from_pretrained('distilbert-base-uncased')
+            model = DistilBertForQuestionAnswering.from_pretrained('distilbert-base-uncased')
 
 
 
