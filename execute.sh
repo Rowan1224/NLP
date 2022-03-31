@@ -19,4 +19,4 @@ source ./env/bin/activate
 pip install -U pip wheel
 pip install -r requirements.txt
 
-python3 fine_tune_distil.py
+python3 fine_tune_distil_squad.py
