@@ -2,12 +2,18 @@ import json
 import os
 import re
 import string
-
 import numpy as np
 import torch
-
-from transformers import pipeline
-
+import pandas as pd
+from transformers import (
+    pipeline,
+    AlbertForQuestionAnswering,
+    AlbertTokenizerFast,
+    DistilBertForQuestionAnswering,
+    DistilBertTokenizerFast,
+    ElectraForQuestionAnswering,
+    ElectraTokenizerFast,
+)
 
 class DomainDataset(torch.utils.data.Dataset):
     def __init__(self, encodings):
@@ -126,3 +132,53 @@ def check_dir_exists(dir):
     path = str(dir)
     if not os.path.exists(path):
         os.makedirs(path)
+
+def save_answers(questions, contexts, true_anwers, predicted_anwers, experiment):
+
+    #save predicted answers in json format
+    df = pd.DataFrame.from_dict(
+        {
+            "questions": questions,
+            "contexts": contexts,
+            "answers": true_anwers,
+            "predictions": predicted_anwers,
+        }
+    )
+
+    check_dir_exists("./output")
+    df.to_json(f"./output/output_{experiment}.json", orient="records")
+
+
+model_name_to_class = {
+        "albert-base": {
+            "model": AlbertForQuestionAnswering,
+            "tokenizer": AlbertTokenizerFast,
+            "model_name": "albert-base-v2",
+        },
+        "bert-base": {
+            "model": DistilBertForQuestionAnswering,
+            "tokenizer": DistilBertTokenizerFast,
+            "model_name": "distilbert-base-uncased",
+        },
+        "electra-base": {
+            "model": ElectraForQuestionAnswering,
+            "tokenizer": ElectraTokenizerFast,
+            "model_name": "google/electra-base-discriminator",
+        },
+        "albert-fine": {
+            "model": AlbertForQuestionAnswering,
+            "tokenizer": AlbertTokenizerFast,
+            "model_name": "twmkn9/albert-base-v2-squad2",
+        },
+        "bert-fine": {
+            "model": DistilBertForQuestionAnswering,
+            "tokenizer": DistilBertTokenizerFast,
+            "model_name": "distilbert-base-uncased-distilled-squad",
+        },
+        "electra-fine": {
+            "model": ElectraForQuestionAnswering,
+            "tokenizer": ElectraTokenizerFast,
+            "model_name": "Palak/google_electra-base-discriminator_squad",
+        },
+        
+    }

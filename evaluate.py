@@ -1,21 +1,9 @@
 import argparse
-import os
-
-import pandas as pd
 import torch
 from torch.utils.data import DataLoader
 from tqdm import tqdm
+from helpers import DomainDataset, compute_em, compute_f1, load_json, save_answers, model_name_to_class
 
-from datasets import load_dataset
-from helpers import DomainDataset, check_dir_exists, compute_em, compute_f1, load_json
-from transformers import (
-    AlbertForQuestionAnswering,
-    AlbertTokenizerFast,
-    DistilBertForQuestionAnswering,
-    DistilBertTokenizerFast,
-    ElectraForQuestionAnswering,
-    ElectraTokenizerFast,
-)
 
 
 def create_arg_parser():
@@ -39,13 +27,18 @@ def create_arg_parser():
         type=float,
         help="Provide the learning rate",
     )
+    parser.add_argument(
+        "-t",
+        "--type",
+        default="base",
+        type=str,
+        choices=["base", "fine"],
+        help="Select the model type for fine-tuning (base or fine-tuned)",
+    )
+
 
     args = parser.parse_args()
     return args
-
-
-def to_list(tensor):
-    return tensor.detach().cpu().tolist()
 
 
 def get_predictions(model, tokenizer, test_dataset):
@@ -84,23 +77,9 @@ def main():
     learning_rate = args.learning_rate
 
     model_args = f"batch_{batch}_lr_{learning_rate}"
+    model_key = f"{args.model}-{args.type}"
 
-    model_name_to_class = {
-        "albert": {
-            "model": AlbertForQuestionAnswering,
-            "tokenizer": AlbertTokenizerFast,
-        },
-        "bert": {
-            "model": DistilBertForQuestionAnswering,
-            "tokenizer": DistilBertTokenizerFast,
-        },
-        "electra": {
-            "model": ElectraForQuestionAnswering,
-            "tokenizer": ElectraTokenizerFast,
-        },
-    }
-
-    model, tokenizer = model_name_to_class[args.model].values()
+    model, tokenizer, _ = model_name_to_class[model_key].values()
     path_to_model = f"./models/custom_{args.model}_{model_args}"
 
     tokenizer = tokenizer.from_pretrained(path_to_model)
@@ -125,18 +104,7 @@ def main():
     print(f"F1: {f1}")
     print(f"EM: {em}")
 
-    df = pd.DataFrame.from_dict(
-        {
-            "questions": test_questions,
-            "contexts": test_contexts,
-            "answers": test_answers,
-            "predictions": predictions,
-        }
-    )
-
-    check_dir_exists("./output")
-    df.to_json("./output/output_{args.model}.json", orient="records")
-
+    save_answers(test_questions,test_contexts,test_answers,predictions,model_key)
 
 if __name__ == "__main__":
     main()

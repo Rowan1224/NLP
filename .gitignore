@@ -3,3 +3,6 @@ QA Pairs
 .ipynb_checkpoints
 __pycache__
 Models
+output
+models
+evaluation.py

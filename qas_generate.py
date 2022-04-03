@@ -1,10 +1,6 @@
-import json
 import re
-
-import torch
 from nltk.tokenize import sent_tokenize
 from tqdm import tqdm
-
 from helpers import write_to_json
 from pipelines import pipeline
 
@@ -40,19 +36,15 @@ def main():
     contexts = open("./data/cleaned_contexts.txt", "r", encoding="utf-8").readlines()
     cleaned_contexts = prepare_input_for_QAgenerator(contexts)
 
-    train_data = []
+    data = []
 
     nlp = pipeline("multitask-qa-qg", model="valhalla/t5-base-qa-qg-hl")
 
     progress = tqdm(total=len(cleaned_contexts))
     for idx, context in enumerate(cleaned_contexts):
 
-        if torch.cuda.is_available():
-            if idx % 100 == 0:
-                torch.cuda.ipc_collect()
-                torch.cuda.empty_cache()
 
-        train_data.append(
+        data.append(
             {
                 "context": context,
                 "questions_and_answers": [
@@ -66,7 +58,8 @@ def main():
 
     progress.close()
 
-    write_to_json("./data/synthetic_qa_pairs.json", train_data)
+    write_to_json("./data/synthetic_qa_pairs.json", data)
+
 
 
 if __name__ == "__main__":

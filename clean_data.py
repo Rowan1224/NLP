@@ -55,6 +55,7 @@ def read_test_qac_triplets():
 
 
 if __name__ == "__main__":
+    
     data = read_data("./data/slp3ed.csv")
 
     cleaned_contexts, removed_contexts = clean_data(data)
