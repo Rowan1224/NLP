@@ -42,8 +42,16 @@ def create_arg_parser():
         default="base",
         type=str,
         choices=["base", "fine"],
-        help="Select the model type for fine-tuning (base or fine-tuned)",
+        help="Select the model type for fine-tuning (base or fine-tuned/domain adapted)",
     )
+
+    parser.add_argument(
+        "-ts",
+        "--use_full_ts",
+        action='store_true',
+        help="Set True if model is required to train on Full training set",
+    )
+
 
     args = parser.parse_args()
     return args
@@ -65,7 +73,7 @@ def set_log(log, filename):
     return log
 
 
-def read_train_data(data):
+def read_train_data(data, flag=False):
     """Read the training data and return a context list,
     question list, and answer list"""
 
@@ -93,6 +101,10 @@ def read_train_data(data):
         }
         
     )
+    # While using the full training set, does not separate the dev set
+    if flag:
+        return df, None
+    
     df = shuffle(df)
     split = int(df.shape[0]*0.80)
     train = df.iloc[:split,:]
@@ -132,23 +144,19 @@ def add_token_positions(encodings, dataset, tokenizer):
 
 
 def checkpoint_model(
-    model, dev_dataset, dev_answers, tokenizer, model_path, current_score, epoch, history, patience, mode="max"
+    model, model_path, current_score, epoch, history, patience, use_full_ts=False, mode="max"
 ):
-    
-    # get predicted answers for dev set
-    predictions = get_predictions(model, tokenizer, dev_dataset)
 
-    # get F1 score and Exact match for dev set
-    f1 = compute_f1(dev_answers, predictions)
-    em = compute_em(dev_answers, predictions)
-
-    history.append({'loss': current_score, 'F1':f1, 'EM': em})
     losses = [score['loss'] for score in history]
 
-    #log current results
-    log.info(f"After {epoch}th epoch: loss: {current_score}, F1: {f1}, EM: {em}")
+    if not use_full_ts: 
+        f1 = history[-1]['F1']
+        em = history[-1]['EM']
+        #log current results
+        log.info(f"After {epoch}th epoch: loss: {current_score}, F1: {f1}, EM: {em}")
 
-    do_break = False
+    else:
+        log.info(f"After {epoch}th epoch: loss: {current_score}")
 
     if (np.max(losses) == current_score and mode == "max") or (
         np.min(losses) == current_score and mode == "min"
@@ -156,14 +164,20 @@ def checkpoint_model(
 
         # Save a trained model and the associated configuration
         model.save_pretrained(model_path)
-        return do_break
+
+        #if current score is the best so far return False to continue the training
+        return False
 
     else:
 
+        #if training is in early stage i.e epoch is less than the patience return False to continue the training
         if epoch < patience:
-            return do_break
+            return False
+
+        #initialize the training break condition as true
         do_break = True
         for score in losses[epoch - patience : -1]:
+            #if current score has improved in any of the last 3 (patience) epochs, set the break conditon to false
             if (mode == "max" and current_score - score > 0) or (
                 mode == "min" and score - current_score > 0
             ):
@@ -182,6 +196,7 @@ def train_and_save_model(
     model_name,
     learning_rate,
     batch_size,
+    use_full_ts = False,
     epochs=10,
     patience=3,
 ):
@@ -231,9 +246,21 @@ def train_and_save_model(
             loop.set_description(f"Epoch {epoch}")
             loop.set_postfix(loss=loss.item())
 
-        
+    
+        if not use_full_ts:    
+        # get predicted answers for dev set
+            predictions = get_predictions(model, tokenizer, dev_dataset)
+
+            # get F1 score and Exact match for dev set
+            f1 = compute_f1(dev_answers, predictions)
+            em = compute_em(dev_answers, predictions)
+
+            history.append({'loss': loss.item(), 'F1':f1, 'EM': em})
+        else:
+            history.append({'loss': loss.item()})
+
         if checkpoint_model(
-            model, dev_dataset, dev_answers, tokenizer, model_path, loss.item(), epoch, history, patience, mode="min"
+            model, model_path, loss.item(), epoch, history, patience, use_full_ts, mode="min"
         ):
             return history
         
@@ -255,6 +282,7 @@ def main():
     learning_rate = args.learning_rate
     model_args = f"batch_{batch}_lr_{learning_rate}"
     model_key = f"{args.model}-{args.type}"
+    use_full_train = args.use_full_ts
 
     #set log
     set_log(log, f"./output/output_{model_key}_{model_args}")
@@ -268,30 +296,34 @@ def main():
     # open JSON file and load into dataframe
     data = load_json("./data/synthetic_qa_pairs.json")
     
-    train, dev = read_train_data(data)
+    train, dev = read_train_data(data,use_full_train)
 
     log.info(f"Train Size: {train.shape[0]}")
-    log.info(f"Dev Size: {dev.shape[0]}")
+      
 
 
-   
-
-    # tokenize train and dev set
+       # tokenize train set
     train_encodings = tokenizer(
         train['contexts'].ravel().tolist(), train['questions'].ravel().tolist(), truncation=True, padding=True
     )
     add_token_positions(train_encodings, train, tokenizer)
-
-
-    dev_encodings = tokenizer(
-         dev['contexts'].ravel().tolist(), dev['questions'].ravel().tolist(), truncation=True, padding=True
-    )
-
-    dev_answers = dev['answers'].ravel().tolist()
   
     # build datasets for our training data
     train_dataset = DomainDataset(train_encodings)
-    dev_dataset = DomainDataset(dev_encodings)
+    
+    # tokenize dev set
+    if dev is not None:
+        log.info(f"Dev Size: {dev.shape[0]}")
+        dev_encodings = tokenizer(
+            dev['contexts'].ravel().tolist(), dev['questions'].ravel().tolist(), truncation=True, padding=True
+        )
+
+        dev_answers = dev['answers'].ravel().tolist()
+        dev_dataset = DomainDataset(dev_encodings)
+    else:
+        dev_answers = None
+        dev_dataset = None
+
 
    
     # train and save model
@@ -307,6 +339,7 @@ def main():
         model_name,
         learning_rate=learning_rate,
         batch_size=batch,
+        use_full_ts = use_full_train
     )
 
     # save tokenizer
@@ -314,10 +347,12 @@ def main():
 
     #log training summary 
     history = pd.DataFrame(history)
+    
     print('Training Complete')
-    result = f"Avg loss: {history['loss'].mean()} \n Avg F1 dev: {history['F1'].mean()} \n Avg EM dev: {history['EM'].mean()}"
-    print(result)
-    logging.info(result)
+    if not use_full_train:
+        result = f"Avg loss: {history['loss'].mean()}\n Avg F1 dev: {history['F1'].mean()}\n Avg EM dev: {history['EM'].mean()}"
+        print(result)
+        logging.info(result)
 
 
 

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 ### Table of Contents
 
@@ -35,7 +34,3 @@ This will store the fine-tuned models inside the `./models/` directory. Finally,
 - Distilbert: `python evaluate.py -m bert`
 - Albert: `python evaluate.py -m albert`
 - Electra `python evaluate.py -m electra`
-
-=======
-Link to download fine tuned distilBertForQuestionAnswering model: https://drive.google.com/drive/folders/1o3qKqSx23d_DgMjxYKFevgHkn8GI0_wh?usp=sharing
->>>>>>> 50a659a6950969e370894c62dd1a2429a4181ad2
