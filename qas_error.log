@@ -1,0 +1,90 @@
+ERROR:root:sen: This simple technique succeeds in this domain because ELIZA doesn't actually need to know anything to mimic a Rogerian psychotherapist., ans: ELIZA doesn't need to know anything
+ERROR:root:sen: As Weizenbaum notes, this is one of the few dialogue genres where listeners can act as if they know nothing of the world., ans: ELIZA
+ERROR:root:sen: The square braces can also be used to specify what a single character cannot be, by use of the caret ˆ., ans: caret <unk>
+ERROR:root:sen: If the caret ˆ is the first symbol after the open square brace [, the resulting pattern is negated., ans: the caret <unk> is the first symbol after the open square brace
+ERROR:root:sen: baaa!, ans: baaaa! baaaa!
+ERROR:root:sen: . . ., ans: sheep
+ERROR:root:sen: (Why isn't it just [ /[0-9]*/ ]?), ans: [ /[0-9]*/]
+ERROR:root:sen: Sometimes it's annoying to have to write the regular expression for digits twice, so there is a shorter way to specify "at least one" of some character., ans: sometimes it's annoying to have to write the regular expression for digits twice
+ERROR:root:sen: Anchors are special characters that anchor regular expressions to particular places in a string., ans: anchors
+ERROR:root:sen: There are also two other anchors: \b matches a word boundary, and \B matches a non-boundary., ans: <unk>b
+ERROR:root:sen: The operator *?, ans: Kleene star
+ERROR:root:sen: The operator +?, ans: Kleene plus
+ERROR:root:sen: This might lead us to the following pattern: [ /[tT]he/ ], ans: [ /[tT]he/]
+ERROR:root:sen: Suppose we wanted to do this without the use of [ /\b/ ]., ans: [ /<unk>b/ ].
+ERROR:root:sen: The regular expression [ /{3}/ ] means "exactly 3 occurrences of the previous character or expression"., ans: exact 3 occurrences of the previous character or expression
+ERROR:root:sen: So /a\., ans: /a<unk>
+ERROR:root:sen: REs for counting are summarized in Figure 2 .9., ans: Figure 2.9
+ERROR:root:sen: The most common of these are the newline character newline \n and the tab character \t., ans: tab character <unk>t
+ERROR:root:sen: We’ll add a decimal point and two digits afterwards: /$[0-9]+\., ans: /$[0-9]+<unk>
+ERROR:root:sen: optional and to make sure we’re at a word boundary: /(ˆ|\W)$[0-9]+(\., ans: /(<unk>|<unk>W)$[0-9]+(<unk>. )
+ERROR:root:sen: One last catch!, ans: $199999.99
+ERROR:root:sen: )\b/, ans: GB
+ERROR:root:sen: Here's how it looks: [ s[ /([0-9]+)/ ]<\1>/ ], ans: [ /([0-9]+)/ ]<unk>1>/
+ERROR:root:sen: We do this by surrounding the first X with the parenthesis operator, and replacing the second X with the number operator \1, as follows: /the (., ans: <unk>1
+ERROR:root:sen: *)er they were, the \1er they will be/, ans: <unk>1er they will be
+ERROR:root:sen: Thus /the (., ans: /the (. )er they (. *)er they (. *)er they (. *)
+ERROR:root:sen: *)er they (., ans: faster they ran
+ERROR:root:sen: Similarly, the third capture group is stored in \\3, the fourth is \\4, and so on., ans: <unk>4
+ERROR:root:sen: /(?, ans: /(? )
+ERROR:root:sen: These lookahead assertions make use of the (?, ans: (? ) syntax
+ERROR:root:sen: The operator (?!, ans: pattern
+ERROR:root:sen: What do you think they are?, ans: what do you think they are
+ERROR:root:sen: Figure 2 .11 shows the rough numbers of types and tokens computed from some popular English corpora., ans: Figure 2.11
+ERROR:root:sen: It is shown in Eq., ans: Eq. 2.1
+ERROR:root:sen: [ 2.1 ], where k and β are positive constants, and 0 < β < 1., ans: k and <unk>
+ERROR:root:sen: The value of β depends on the corpus size and the genre, but at least for the large corpora in Figure 2 .11, β ranges from .67 to .75., ans: .67 to.75
+ERROR:root:sen: ), but we don't want to limit tools to just these few languages., ans: limited
+ERROR:root:sen: How can a user of a dataset know all these details?, ans: how can a user of a dataset know all these details
+ERROR:root:sen: Situation: When and in what situation was the text written/spoken?, ans: when and in what situation was the text written/spoken
+ERROR:root:sen: Normalizing word formats 3., ans: normalizing
+ERROR:root:sen: Figure 2 .14 Representing the minimum edit distance between two strings as an alignment., ans: Figure 2.14
+ERROR:root:sen: Why?, ans: if there were a shorter path from intention to exention, then we could use it instead
+ERROR:root:sen: The algorithm is summarized in Figure [ 2.17 ]; Figure [ 2.18 ] shows the results of applying the algorithm to the distance between intention and execution with the version of Levenshtein in Eq., ans: Figure [ 2.17]
+ERROR:root:sen: Figure 2 .19 shows this path with the boldfaced cell., ans: Figure 2.19
+ERROR:root:sen: Figure 2 .19 also shows the intuition of how to compute this alignment path., ans: Figure 2.19
+ERROR:root:sen: What word, for example, is likely to follow, ans: predicting
+ERROR:root:sen: The same models will also serve to assign a probability to an entire sentence., ans: sentences
+ERROR:root:sen: For the joint probability of each word in a sequence having a particular value P(X = w 1 ,Y = w 2 , Z = w 3 , ...,W = w n ) we'll use P(w 1 , w 2 , ..., w n )., ans: P(w 1, w 2,..., w n)
+ERROR:root:sen: Now how can we compute probabilities of entire sequences like P(w 1 , w 2 , ..., w n )?, ans: P(w 1, w 2,..., w n)
+ERROR:root:sen: We don't know any way to compute the exact probability of a word given a long sequence of preceding words, P(w n |w n−1 1 )., ans: P(w n |w n<unk>1 1
+ERROR:root:sen: Given the bigram assumption for the probability of an individual word, we can compute the probability of a complete word sequence by substituting Eq., ans: substituting Eq. 3.7
+ERROR:root:sen: We'll first need to augment each sentence with a special symbol <s> at the beginning of the sentence, to give us the bigram context of the first word., ans: <unk>s>
+ERROR:root:sen: The MLE of its probability is 400 1000000 or .0004., ans: 400 1000000 or.0004
+ERROR:root:sen: Figure 3 .1 shows the bigram counts from a piece of a bigram grammar from the Berkeley Restaurant Project., ans: Figure 3.1
+ERROR:root:sen: For example, to compute trigram probabilities at the very beginning of the sentence, we use two pseudo-words for the first trigram (i.e., P(I|<s><s>)., ans: P(I|<unk>s><unk>s>
+ERROR:root:sen: Adding in log space is equivalent to multiplying in linear space, so we combine log probabilities by adding them., ans: adding log probabilities
+ERROR:root:sen: Suppose we are trying to compute the probability of a particular "test" sentence., ans: test sentence
+ERROR:root:sen: Given a large corpus that we want to divide into training and test, test data can either be taken from some continuous sequence of text inside the corpus, or we can remove smaller "stripes" of text from randomly selected parts of our corpus and combine them into a test set., ans: small "stripes" of text
+ERROR:root:sen: [ 3.15 ] or Eq., ans: the entire sequence of words in some test set
+ERROR:root:sen: Since this sequence will cross many sentence boundaries, we need to include the begin-and end-sentence markers <s> and </s> in the probability computation., ans: begin-and-end-sentence markers
+ERROR:root:sen: By Eq., ans: Eq. 1.3
+ERROR:root:sen: Now we see the following test set: 0 0 0 0 0 3 0 0 0 0., ans: 0 0 0 0 0 0 3 0 0 0.
+ERROR:root:sen: Figure 3 .3 shows a visualization, using a unigram LM computed from the text of this book., ans: Figure 3.3
+ERROR:root:sen: Figure 3 .3 A visualization of the sampling distribution for sampling sentences by repeatedly sampling unigrams., ans: Figure 3.3
+ERROR:root:sen: To give an intuition for the increasing power of higher-order n-grams, Figure 3 .4 shows random sentences generated from unigram, bigram, trigram, and 4gram models trained on Shakespeare's works., ans: Figure 3.4
+ERROR:root:sen: Figure 3 .5 shows sentences generated by unigram, bigram, and trigram grammars trained on 40 million words from WSJ., ans: Figure 3.5
+ERROR:root:sen: Compare these examples to the pseudo-Shakespeare in Figure 3 .4., ans: Figure 3.4
+ERROR:root:sen: These zerosthings that don't ever occur in the training set but do occur in zeros the test set-are a problem for two reasons., ans: zeros things
+ERROR:root:sen: is one in which we model these potential unknown words in the test set by adding a pseudo-word called <UNK>., ans: <unk>UNK>
+ERROR:root:sen: [ 1. ], ans: word list
+ERROR:root:sen: [ 2. ], ans: any word that is not in this set
+ERROR:root:sen: Convert in the training set any word that is not in this set (any word) to the unknown word token <UNK> in a text normalization step., ans: <unk>UNK>
+ERROR:root:sen: [ 3. ], ans: Estimate the probabilities for <unk>UNK>
+ERROR:root:sen: Estimate the probabilities for <UNK> from its counts just like any other regular word in the training set., ans: Estimate the probabilities for <unk>UNK> from its counts
+ERROR:root:sen: The second alternative, in situations where we don't have a prior vocabulary in advance, is to create such a vocabulary implicitly, replacing words in the training data by <UNK> based on their frequency., ans: <unk>UNK>
+ERROR:root:sen: In either case we then proceed to train the language model as before, treating <UNK> like a regular word., ans: <unk>UNK>
+ERROR:root:sen: Laplace smoothing does not perform well enough to be used Laplace smoothing in modern n-gram models, but it usefully introduces many of the concepts that we see in other smoothing algorithms, gives a useful baseline, and is also a practical smoothing algorithm for other tasks like text classification (Chapter 4)., ans: Text classification
+ERROR:root:sen: Figure 3 .6 shows the add-one smoothed counts for the bigrams in Figure [ 3.1 ] ., ans: Figure 3.6
+ERROR:root:sen: Figure 3 .7 shows the add-one smoothed probabilities for the bigrams in Figure 3 .2., ans: Figure 3.7
+ERROR:root:sen: Figure 3 .8 shows the reconstructed counts., ans: Figure 3.8
+ERROR:root:sen: .05?, ans: .01
+ERROR:root:sen: .01?)., ans: add-k smoothing
+ERROR:root:sen: How are these λ values set?, ans: how are these <unk> values set
+ERROR:root:sen: In addition to this explicit discount factor, we'll need a function α to distribute this probability mass to the lower order n-grams., ans: <unk>
+ERROR:root:sen: Figure 3 .9 from Church and Gale (1991) shows these counts for bigrams with c from 0 to 9., ans: Figure 3.9
+ERROR:root:sen: In other words, instead of P(w), which answers the question "How likely is w?, ans: P CONTINUATION
+ERROR:root:sen: The second term, |{w : C(w i−1 w) > 0}|, is the number of word types that can follow w i−1 or, equivalently, the number of word types that we discounted; in other words, the number of times we applied the normalized discount., ans: the number of word types that can follow w i<unk>1
+ERROR:root:sen: (2007) in referring to it as S:, ans: S: (2007)
+ERROR:root:sen: What if the horses are equally likely?, ans: equallength
+ERROR:root:sen: . . , w n }., ans: w n <unk>

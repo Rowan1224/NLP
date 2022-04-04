@@ -1,8 +1,12 @@
 import re
 from nltk.tokenize import sent_tokenize
 from tqdm import tqdm
-from helpers import write_to_json
+import json
 from pipelines import pipeline
+
+def write_to_json(file_path, data):
+    with open(file_path, "w", encoding="utf-8") as f:
+        json.dump(data, f)
 
 
 def prepare_input_for_QAgenerator(contexts):

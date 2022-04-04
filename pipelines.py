@@ -2,7 +2,7 @@ import itertools
 import logging
 from selectors import EpollSelector
 from typing import Optional, Dict, Union
-logging.basicConfig(filename='../error.log')
+logging.basicConfig(filename='qas_error.log')
 from nltk import sent_tokenize
 
 import torch
@@ -109,7 +109,6 @@ class QGPipeline:
         dec = [self.ans_tokenizer.decode(ids, skip_special_tokens=False) for ids in outs]
         answers = [item.split('<sep>') for item in dec]
         answers = [i[:-1] for i in answers]
-        
         return sents, answers
     
     def _tokenize(self,
@@ -157,7 +156,7 @@ class QGPipeline:
                 initial_sent = sent
                 sents_copy = sents[:]
                 
-                answer_text = answer_text.strip()
+                answer_text = answer_text.replace('<pad>','').strip()
                 
                 try:
                     ans_start_idx = sent.index(answer_text)
@@ -172,8 +171,8 @@ class QGPipeline:
 
                     inputs.append({"answer": answer_text, "source_text": source_text})
 
-                except ValueError:
-                    logging.error(f"sen: {initial_sent}, ans: {answer}")
+                except:
+                    logging.error(f"sen: {initial_sent}, ans: {answer_text}")
                     continue
 
 
@@ -218,10 +217,11 @@ class MultiTaskQAQGPipeline(QGPipeline):
         outs = self.model.generate(
             input_ids=inputs['input_ids'].to(self.device), 
             attention_mask=inputs['attention_mask'].to(self.device), 
-            max_length=16,
+            max_length=32,
         )
 
         answer = self.tokenizer.decode(outs[0], skip_special_tokens=True)
+        print(answer)
         return answer
 
 

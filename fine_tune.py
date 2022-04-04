@@ -327,7 +327,7 @@ def main():
 
    
     # train and save model
-    model_path = f"./models/custom_{args.model}_{model_args}"
+    model_path = f"./models/custom_{model_key}_{model_args}"
     check_dir_exists("./models")    
     history = train_and_save_model(
         train_dataset,
