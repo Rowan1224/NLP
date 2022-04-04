@@ -6,7 +6,7 @@ from nltk.tokenize import word_tokenize
 from tqdm import tqdm
 
 from english_words import english_words_set
-from helpers import write_to_file, write_to_json
+from utils import write_to_file, write_to_json
 
 
 def read_data(file_path):

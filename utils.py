@@ -150,35 +150,22 @@ def save_answers(questions, contexts, true_anwers, predicted_anwers, experiment)
 
 
 model_name_to_class = {
-        "albert-base": {
+        "albert": {
             "model": AlbertForQuestionAnswering,
             "tokenizer": AlbertTokenizerFast,
-            "model_name": "albert-base-v2",
+            "base_model_name": "albert-base-v2",
+            "fine_model_name": "twmkn9/albert-base-v2-squad2",
         },
-        "bert-base": {
+        "bert": {
             "model": DistilBertForQuestionAnswering,
             "tokenizer": DistilBertTokenizerFast,
-            "model_name": "distilbert-base-uncased",
+            "base_model_name": "distilbert-base-uncased",
+            "fine_model_name": "distilbert-base-uncased-distilled-squad",
         },
-        "electra-base": {
+        "electra": {
             "model": ElectraForQuestionAnswering,
             "tokenizer": ElectraTokenizerFast,
-            "model_name": "google/electra-base-discriminator",
+            "base_model_name": "google/electra-base-discriminator",
+            "fine_model_name": "Palak/google_electra-base-discriminator_squad",
         },
-        "albert-fine": {
-            "model": AlbertForQuestionAnswering,
-            "tokenizer": AlbertTokenizerFast,
-            "model_name": "twmkn9/albert-base-v2-squad2",
-        },
-        "bert-fine": {
-            "model": DistilBertForQuestionAnswering,
-            "tokenizer": DistilBertTokenizerFast,
-            "model_name": "distilbert-base-uncased-distilled-squad",
-        },
-        "electra-fine": {
-            "model": ElectraForQuestionAnswering,
-            "tokenizer": ElectraTokenizerFast,
-            "model_name": "Palak/google_electra-base-discriminator_squad",
-        },
-        
     }

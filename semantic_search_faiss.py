@@ -10,7 +10,7 @@ import pandas as pd
 import torch
 
 import faiss
-from helpers import (
+from utils import (
     evaluate_predictions,
     get_embeddings_from_contexts,
     load_json,
@@ -95,9 +95,9 @@ def evaluate_semantic_model(model, questions, contexts, index, test_answers):
 
 if __name__ == "__main__":
 
-    qa_model = load_question_answering_model(
-        "Palak/google_electra-base-discriminator_squad"
-    )
+    #best QA Models from fine tuning
+    qa_models = ['albert_batch_4_lr_3e-05','bert_batch_4_lr_5e-05','electra_batch_4_lr_3e-05']
+
     t2t_model = load_text_generation_model("allenai/unifiedqa-t5-large")
     semantic_search_model = load_semantic_search_model("all-mpnet-base-v2")
 
@@ -125,9 +125,13 @@ if __name__ == "__main__":
         t2t_model,
         test_answers,
     )
-    evaluate_qa_and_semantic_model(
-        semantic_search_model, test_questions, qa_model, contexts, index
-    )
+    for model_name in qa_models:
+        qa_model = load_question_answering_model(
+            f"./models/custom_{model_name}"
+        )
+        evaluate_qa_and_semantic_model(
+            semantic_search_model, test_questions, qa_model, contexts, index
+        )
 
     end = time.time()
     print(f"Time taken: {end - start}")

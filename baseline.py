@@ -1,5 +1,5 @@
 from torch.utils.data import DataLoader
-from helpers import DomainDataset, compute_f1, load_json, compute_em, model_name_to_class, save_answers
+from utils import DomainDataset, compute_f1, load_json, compute_em, model_name_to_class, save_answers
 import evaluate
 
 
