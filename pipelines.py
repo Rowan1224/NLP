@@ -75,12 +75,12 @@ class QGPipeline:
             if len(qg_inputs) != 0:
                 questions = self._generate_questions(qg_inputs)
                 output = [{'answer': example['answer'], 'question': que} for example, que in zip(qg_examples, questions)]
-                torch.cuda.empty_cache()
+                
                 return output
             else:
                 return []
         else:
-            torch.cuda.empty_cache()
+            
             return []
     
     def _generate_questions(self, inputs):
@@ -156,7 +156,8 @@ class QGPipeline:
                 initial_sent = sent
                 sents_copy = sents[:]
                 
-                answer_text = answer_text.replace('<pad>','').strip()
+                # answer_text = answer_text.replace('<pad>','').strip()
+                answer_text = answer_text.strip()
                 
                 try:
                     ans_start_idx = sent.index(answer_text)

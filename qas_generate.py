@@ -45,8 +45,7 @@ def main():
     nlp = pipeline("multitask-qa-qg", model="valhalla/t5-base-qa-qg-hl")
 
     progress = tqdm(total=len(cleaned_contexts))
-    for idx, context in enumerate(cleaned_contexts):
-
+    for context in cleaned_contexts:
 
         data.append(
             {
