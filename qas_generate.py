@@ -1,7 +1,7 @@
 import re
 from nltk.tokenize import sent_tokenize
 from tqdm import tqdm
-from helpers import write_to_json
+from utils import write_to_json
 from pipelines import pipeline
 
 

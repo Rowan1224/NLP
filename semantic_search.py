@@ -1,7 +1,7 @@
 import time
 import torch
 from sentence_transformers import util
-from helpers import (
+from utils import (
     evaluate_predictions,
     get_embeddings_from_contexts,
     load_json,

@@ -8,7 +8,7 @@ from torch.utils.data import DataLoader
 from tqdm import tqdm
 from evaluate import get_predictions
 import pandas as pd
-from helpers import check_dir_exists, compute_em, compute_f1, model_name_to_class, DomainDataset
+from utils import check_dir_exists, compute_em, compute_f1, model_name_to_class, DomainDataset
 from transformers import AdamW
 
 
@@ -49,8 +49,6 @@ def create_arg_parser():
     return args
 
 def set_log(log, filename):
-
-    
     log.setLevel(logging.INFO)
     # create formatter and add it to the handlers
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -260,10 +258,9 @@ def main():
     set_log(log, f"./output/output_{model_key}_{model_args}")
 
     #set model and tokenizer     
-    model, tokenizer, model_name = model_name_to_class[model_key].values()
+    model, tokenizer, base_model_name, fine_model_name = model_name_to_class[args.model].values()
+    model_name = base_model_name if args.type == 'base' else fine_model_name
     tokenizer = tokenizer.from_pretrained(model_name)
-
-
 
     # open JSON file and load into dataframe
     data = load_json("./data/synthetic_qa_pairs.json")
@@ -295,7 +292,7 @@ def main():
 
    
     # train and save model
-    model_path = f"./models/custom_{args.model}_{model_args}"
+    model_path = f"./models/custom_{args.model}_{args.type}_{model_args}"
     check_dir_exists("./models")    
     history = train_and_save_model(
         train_dataset,

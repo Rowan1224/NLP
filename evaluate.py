@@ -2,7 +2,7 @@ import argparse
 import torch
 from torch.utils.data import DataLoader
 from tqdm import tqdm
-from helpers import DomainDataset, compute_em, compute_f1, load_json, save_answers, model_name_to_class
+from utils import DomainDataset, compute_em, compute_f1, load_json, save_answers, model_name_to_class
 
 
 
@@ -80,7 +80,10 @@ def main():
     model_key = f"{args.model}-{args.type}"
 
     model, tokenizer, _ = model_name_to_class[model_key].values()
-    path_to_model = f"./models/custom_{args.model}_{model_args}"
+
+    model, tokenizer, _, _ = model_name_to_class[args.model].values()
+
+    path_to_model = f"./models/custom_{args.model}_{args.type}_{model_args}"
 
     tokenizer = tokenizer.from_pretrained(path_to_model)
     model = model.from_pretrained(path_to_model)
