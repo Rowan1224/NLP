@@ -35,7 +35,7 @@ class QGPipeline:
         self.qg_format = qg_format
 
         self.device = "cuda" if torch.cuda.is_available() and use_cuda else "cpu"
-        # self.device = torch.device('cpu')
+        self.device = torch.device('cpu')
         self.model.to(self.device)
 
 

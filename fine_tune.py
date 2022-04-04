@@ -57,6 +57,7 @@ def create_arg_parser():
     return args
 
 def set_log(log, filename):
+    
     log.setLevel(logging.INFO)
     # create formatter and add it to the handlers
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -103,7 +104,7 @@ def read_train_data(data, flag=False):
     if flag:
         return df, None
     
-    df = shuffle(df)
+    df = shuffle(df, random_state=43)
     split = int(df.shape[0]*0.80)
     train = df.iloc[:split,:]
     dev = df.iloc[split:,:]

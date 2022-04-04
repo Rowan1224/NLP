@@ -6,4 +6,4 @@ Models
 output
 models
 evaluation.py
-.log
+qas_error.log
