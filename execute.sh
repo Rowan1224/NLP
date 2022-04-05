@@ -19,7 +19,7 @@ pip install -r requirements.txt
 
 for i in 4 8 16;
 do
-    for j in 1e-5 2e-5 3e-5;
+    for j in 1e-5 3e-5 5e-5;
     do 
         python3 fine_tune.py -m albert -t base -b $i -lr $j
     done

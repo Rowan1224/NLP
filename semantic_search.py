@@ -86,7 +86,7 @@ def evaluate_semantic_model(model, questions, contexts, contexts_emb, test_answe
 if __name__ == "__main__":
 
     #best QA Models from fine tuning
-    qa_models = ['albert_batch_4_lr_3e-05','bert_batch_4_lr_5e-05','electra_batch_4_lr_3e-05']
+    qa_models = ['albert-squad-slp','distilbert-squad-slp','electra-squad-slp']
 
     t2t_model = load_text_generation_model("allenai/unifiedqa-t5-large")
     semantic_search_model = load_semantic_search_model("all-mpnet-base-v2")
@@ -122,11 +122,12 @@ if __name__ == "__main__":
         
     for model_name in qa_models:
         qa_model = load_question_answering_model(
-            f"./models/custom_{model_name}"
+            f"rowan1224/{model_name}"
         )
-        evaluate_qa_and_semantic_model(
-            semantic_search_model, test_questions, qa_model, contexts, contexts_emb, model_name
-        )
+        if qa_model is not None:
+            evaluate_qa_and_semantic_model(
+                semantic_search_model, test_questions, qa_model, contexts, contexts_emb, model_name
+            )
 
     end = time.time()
     print(f"Time taken: {end - start}")

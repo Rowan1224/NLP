@@ -2,7 +2,7 @@ import argparse
 import torch
 from torch.utils.data import DataLoader
 from tqdm import tqdm
-from utils import DomainDataset, compute_em, compute_f1, load_json, save_answers, model_name_to_class
+from utils import DomainDataset, compute_em, compute_f1, load_json, save_answers, saved_models
 
 
 
@@ -17,23 +17,22 @@ def create_arg_parser():
         choices=["bert", "albert", "electra"],
         help="Select the model for evaluation",
     )
-    parser.add_argument(
-        "-b", "--batch", default=4, type=int, help="Provide the number of batch"
-    )
-    parser.add_argument(
-        "-lr",
-        "--learning_rate",
-        default=5e-5,
-        type=float,
-        help="Provide the learning rate",
-    )
+
     parser.add_argument(
         "-t",
         "--type",
-        default="base",
+        default="squad",
         type=str,
-        choices=["base", "fine"],
-        help="Select the model type for fine-tuning (base or fine-tuned)",
+        choices=["squad", "fine"],
+        help="Select the model type for fine-tuning (base or fine-tuned/domain adapted)",
+    )
+
+    parser.add_argument(
+        "-path",
+        "--model_path",
+        default=None,
+        type=str,
+        help="Provide the path of the saved model",
     )
 
 
@@ -73,20 +72,22 @@ def get_predictions(model, tokenizer, test_dataset):
 def main():
 
     args = create_arg_parser()
-    batch = args.batch
-    learning_rate = args.learning_rate
+    
+    
 
-    model_args = f"batch_{batch}_lr_{learning_rate}"
+    model, tokenizer, fine_model_name, squad_model_name = saved_models[args.model].values()
+    model_name = fine_model_name if args.type == 'fine' else squad_model_name
     model_key = f"{args.model}-{args.type}"
+    path_to_model = args.model_path
 
-    model, tokenizer, _ = model_name_to_class[model_key].values()
-
-    model, tokenizer, _, _ = model_name_to_class[args.model].values()
-
-    path_to_model = f"./models/custom_{args.model}_{args.type}_{model_args}"
-
-    tokenizer = tokenizer.from_pretrained(path_to_model)
-    model = model.from_pretrained(path_to_model)
+    if path_to_model is None:
+        path_to_model = model_name
+    
+    try:
+        tokenizer = tokenizer.from_pretrained(path_to_model)
+        model = model.from_pretrained(path_to_model)
+    except OSError:
+        print("Please download the models in to 'models' direcotry")
 
     test_qac = load_json("./data/test_qac.json")
     test_questions = [pair["question"] for pair in test_qac]

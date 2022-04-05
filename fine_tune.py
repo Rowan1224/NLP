@@ -39,9 +39,9 @@ def create_arg_parser():
     parser.add_argument(
         "-t",
         "--type",
-        default="base",
+        default="squad",
         type=str,
-        choices=["base", "fine"],
+        choices=["squad", "fine"],
         help="Select the model type for fine-tuning (base or fine-tuned/domain adapted)",
     )
 
@@ -57,7 +57,7 @@ def create_arg_parser():
     return args
 
 def set_log(log, filename):
-    
+
     log.setLevel(logging.INFO)
     # create formatter and add it to the handlers
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -287,8 +287,8 @@ def main():
     set_log(log, f"./output/output_{model_key}_{model_args}")
 
     #set model and tokenizer     
-    model, tokenizer, base_model_name, fine_model_name = model_name_to_class[args.model].values()
-    model_name = base_model_name if args.type == 'base' else fine_model_name
+    model, tokenizer, fine_model_name, squad_model_name = model_name_to_class[args.model].values()
+    model_name = fine_model_name if args.type == 'fine' else squad_model_name
     tokenizer = tokenizer.from_pretrained(model_name)
 
     # open JSON file and load into dataframe
@@ -350,7 +350,7 @@ def main():
     if not use_full_train:
         result = f"Avg loss: {history['loss'].mean()}\n Avg F1 dev: {history['F1'].mean()}\n Avg EM dev: {history['EM'].mean()}"
         print(result)
-        logging.info(result)
+        log.info(result)
 
 
 

@@ -7,7 +7,7 @@ import evaluate
 for k,v in model_name_to_class.items():
 
 
-    model, tokenizer, model_name = v.values()
+    model, tokenizer, model_name, _ = v.values()
 
     test_qac = load_json("./data/test_qac.json")
     test_questions = [pair["question"] for pair in test_qac]

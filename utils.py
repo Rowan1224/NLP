@@ -101,7 +101,11 @@ def load_text_generation_model(model_name):
 
 
 def load_question_answering_model(model_name):
-    return pipeline("question-answering", model=model_name)
+    try:
+       return pipeline("question-answering", model=model_name)
+    except:
+        print("Model Not Found: Please download the models in to 'models' direcotry")
+    
 
 
 def get_embeddings_from_contexts(model, contexts):
@@ -153,19 +157,40 @@ model_name_to_class = {
         "albert": {
             "model": AlbertForQuestionAnswering,
             "tokenizer": AlbertTokenizerFast,
-            "base_model_name": "albert-base-v2",
-            "fine_model_name": "twmkn9/albert-base-v2-squad2",
+            "fine_model_name": "albert-base-v2",
+            "squad_model_name": "twmkn9/albert-base-v2-squad2",
         },
         "bert": {
             "model": DistilBertForQuestionAnswering,
             "tokenizer": DistilBertTokenizerFast,
-            "base_model_name": "distilbert-base-uncased",
-            "fine_model_name": "distilbert-base-uncased-distilled-squad",
+            "fine_model_name": "distilbert-base-uncased",
+            "squad_model_name": "distilbert-base-uncased-distilled-squad",
         },
         "electra": {
             "model": ElectraForQuestionAnswering,
             "tokenizer": ElectraTokenizerFast,
-            "base_model_name": "google/electra-base-discriminator",
-            "fine_model_name": "Palak/google_electra-base-discriminator_squad",
+            "fine_model_name": "google/electra-base-discriminator",
+            "squad_model_name": "Palak/google_electra-base-discriminator_squad",
+        },
+    }
+
+saved_models = {
+        "albert": {
+            "model": AlbertForQuestionAnswering,
+            "tokenizer": AlbertTokenizerFast,
+            "fine_model_name": "rowan1224/albert-slp",
+            "squad_model_name": "rowan1224/albert-squad-slp",
+        },
+        "bert": {
+            "model": DistilBertForQuestionAnswering,
+            "tokenizer": DistilBertTokenizerFast,
+            "fine_model_name": "rowan1224/distilbert-slp",
+            "squad_model_name": "rowan1224/distilbert-squad-slp",
+        },
+        "electra": {
+            "model": ElectraForQuestionAnswering,
+            "tokenizer": ElectraTokenizerFast,
+            "fine_model_name": "rowan1224/electra-slp",
+            "squad_model_name": "rowan1224/electra-squad-slp",
         },
     }
