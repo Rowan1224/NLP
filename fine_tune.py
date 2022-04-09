@@ -1,16 +1,18 @@
-import logging
 import argparse
 import json
+import logging
+
 import numpy as np
-from sklearn.utils import shuffle
+import pandas as pd
 import torch
+from sklearn.utils import shuffle
 from torch.utils.data import DataLoader
 from tqdm import tqdm
-from evaluate import get_predictions
-import pandas as pd
-from utils import check_dir_exists, compute_em, compute_f1, model_name_to_class, DomainDataset
-from transformers import AdamW
 
+from evaluate import get_predictions
+from transformers import AdamW
+from utils import (DomainDataset, check_dir_exists, compute_em, compute_f1,
+                   model_name_to_class_dict)
 
 log = logging.getLogger('transformers')
 def create_arg_parser():
@@ -287,6 +289,7 @@ def main():
     set_log(log, f"./output/output_{model_key}_{model_args}")
 
     #set model and tokenizer     
+    model_name_to_class = model_name_to_class_dict()
     model, tokenizer, fine_model_name, squad_model_name = model_name_to_class[args.model].values()
     model_name = fine_model_name if args.type == 'fine' else squad_model_name
     tokenizer = tokenizer.from_pretrained(model_name)

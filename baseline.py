@@ -1,9 +1,10 @@
 from torch.utils.data import DataLoader
-from utils import DomainDataset, compute_f1, load_json, compute_em, model_name_to_class, save_answers
+
 import evaluate
+from utils import (DomainDataset, compute_em, compute_f1, load_json,
+                   model_name_to_class_dict, save_answers)
 
-
-
+model_name_to_class = model_name_to_class_dict()
 for k,v in model_name_to_class.items():
 
 
@@ -33,4 +34,3 @@ for k,v in model_name_to_class.items():
     print(f"EM: {em}")
 
     save_answers(test_questions,test_contexts,test_answers,predictions,f"{k}_baseline")
-

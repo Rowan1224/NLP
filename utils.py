@@ -2,18 +2,11 @@ import json
 import os
 import re
 import string
+
 import numpy as np
-import torch
 import pandas as pd
-from transformers import (
-    pipeline,
-    AlbertForQuestionAnswering,
-    AlbertTokenizerFast,
-    DistilBertForQuestionAnswering,
-    DistilBertTokenizerFast,
-    ElectraForQuestionAnswering,
-    ElectraTokenizerFast,
-)
+import torch
+
 
 class DomainDataset(torch.utils.data.Dataset):
     def __init__(self, encodings):
@@ -96,11 +89,8 @@ def load_semantic_search_model(model_name):
     return SentenceTransformer(model_name)
 
 
-def load_text_generation_model(model_name):
-    return pipeline("text2text-generation", model_name)
-
-
 def load_question_answering_model(model_name):
+    from transformers import pipeline
     try:
        return pipeline("question-answering", model=model_name)
     except:
@@ -153,28 +143,47 @@ def save_answers(questions, contexts, true_anwers, predicted_anwers, experiment)
     df.to_json(f"./output/output_{experiment}.json", orient="records")
 
 
-model_name_to_class = {
-        "albert": {
-            "model": AlbertForQuestionAnswering,
-            "tokenizer": AlbertTokenizerFast,
-            "fine_model_name": "albert-base-v2",
-            "squad_model_name": "twmkn9/albert-base-v2-squad2",
-        },
-        "bert": {
-            "model": DistilBertForQuestionAnswering,
-            "tokenizer": DistilBertTokenizerFast,
-            "fine_model_name": "distilbert-base-uncased",
-            "squad_model_name": "distilbert-base-uncased-distilled-squad",
-        },
-        "electra": {
-            "model": ElectraForQuestionAnswering,
-            "tokenizer": ElectraTokenizerFast,
-            "fine_model_name": "google/electra-base-discriminator",
-            "squad_model_name": "Palak/google_electra-base-discriminator_squad",
-        },
-    }
+def model_name_to_class_dict():
+    from transformers import (
+        AlbertForQuestionAnswering,
+        AlbertTokenizerFast,
+        DistilBertForQuestionAnswering,
+        DistilBertTokenizerFast,
+        ElectraForQuestionAnswering,
+        ElectraTokenizerFast,
+    )
 
-saved_models = {
+    return {
+            "albert": {
+                "model": AlbertForQuestionAnswering,
+                "tokenizer": AlbertTokenizerFast,
+                "fine_model_name": "albert-base-v2",
+                "squad_model_name": "twmkn9/albert-base-v2-squad2",
+            },
+            "bert": {
+                "model": DistilBertForQuestionAnswering,
+                "tokenizer": DistilBertTokenizerFast,
+                "fine_model_name": "distilbert-base-uncased",
+                "squad_model_name": "distilbert-base-uncased-distilled-squad",
+            },
+            "electra": {
+                "model": ElectraForQuestionAnswering,
+                "tokenizer": ElectraTokenizerFast,
+                "fine_model_name": "google/electra-base-discriminator",
+                "squad_model_name": "Palak/google_electra-base-discriminator_squad",
+            },
+        }
+
+def saved_models_dict():
+    from transformers import (
+        AlbertForQuestionAnswering,
+        AlbertTokenizerFast,
+        DistilBertForQuestionAnswering,
+        DistilBertTokenizerFast,
+        ElectraForQuestionAnswering,
+        ElectraTokenizerFast,
+    )
+    return {
         "albert": {
             "model": AlbertForQuestionAnswering,
             "tokenizer": AlbertTokenizerFast,
