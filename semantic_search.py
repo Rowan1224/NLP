@@ -162,6 +162,8 @@ if __name__ == "__main__":
     )
 
     for model_name in qa_models:
+
+        #load models from hugginface hub
         qa_model = load_question_answering_model(f"rowan1224/{model_name}")
         if qa_model is not None:
             evaluate_qa_and_semantic_model(
