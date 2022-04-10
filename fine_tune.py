@@ -50,7 +50,7 @@ def create_arg_parser():
         default="squad",
         type=str,
         choices=["squad", "fine"],
-        help="Select the model type for fine-tuning (base or fine-tuned/domain adapted)",
+        help="Select the model type for training (fine-tuning or domain adaption on SQuAD model)",
     )
 
     parser.add_argument(

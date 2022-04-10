@@ -131,11 +131,7 @@ if __name__ == "__main__":
     args = create_arg_parser()
 
     # best QA Models from fine tuning
-    qa_models = [
-        "custom_electra-fine_batch_16_lr_1e-05",
-        "custom_albert-fine_batch_16_lr_1e-05",
-        "custom_bert-fine_batch_4_lr_1e-05",
-    ]
+    qa_models = ['albert-squad-slp','distilbert-squad-slp','electra-squad-slp']
     semantic_search_model = load_semantic_search_model("all-mpnet-base-v2")
     contexts = open("./data/cleaned_contexts.txt", "r", encoding="utf-8").readlines()
 
@@ -166,7 +162,7 @@ if __name__ == "__main__":
     )
 
     for model_name in qa_models:
-        qa_model = load_question_answering_model(f"./models/{model_name}")
+        qa_model = load_question_answering_model(f"rowan1224/{model_name}")
         if qa_model is not None:
             evaluate_qa_and_semantic_model(
                 semantic_search_model,
