@@ -1,4 +1,4 @@
-transformers==3.0.0
+transformers
 sentence-transformers
 numpy
 torch

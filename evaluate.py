@@ -1,15 +1,20 @@
 import argparse
-
 import torch
-from numpy import save
 from torch.utils.data import DataLoader
 from tqdm import tqdm
-
-from utils import (DomainDataset, compute_em, compute_f1, load_json,
-                   save_answers, saved_models_dict)
+from utils import (
+    DomainDataset,
+    compute_em,
+    compute_f1,
+    load_json,
+    save_answers,
+    saved_models_dict,
+)
 
 
 def create_arg_parser():
+
+    """Returns a map with commandline parameters taken from the user"""
 
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -38,12 +43,13 @@ def create_arg_parser():
         help="Provide the path of the saved model",
     )
 
-
     args = parser.parse_args()
     return args
 
 
 def get_predictions(model, tokenizer, test_dataset):
+
+    """Return predictions from model"""
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -51,7 +57,7 @@ def get_predictions(model, tokenizer, test_dataset):
     # set model to evaluation mode
     model.eval()
     # setup loop (we use tqdm for the progress bar)
-    predictions = list()
+    predictions = []
     loop = tqdm(test_dataset, leave=True)
     for batch in loop:
         # initialize calculated gradients (from prev step)
@@ -75,17 +81,18 @@ def get_predictions(model, tokenizer, test_dataset):
 def main():
 
     args = create_arg_parser()
-    
-    
+
     saved_models = saved_models_dict()
-    model, tokenizer, fine_model_name, squad_model_name = saved_models[args.model].values()
-    model_name = fine_model_name if args.type == 'fine' else squad_model_name
+    model, tokenizer, fine_model_name, squad_model_name = saved_models[
+        args.model
+    ].values()
+    model_name = fine_model_name if args.type == "fine" else squad_model_name
     model_key = f"{args.model}-{args.type}"
     path_to_model = args.model_path
 
     if path_to_model is None:
         path_to_model = model_name
-    
+
     try:
         tokenizer = tokenizer.from_pretrained(path_to_model)
         model = model.from_pretrained(path_to_model)
@@ -111,7 +118,8 @@ def main():
     print(f"F1: {f1}")
     print(f"EM: {em}")
 
-    save_answers(test_questions,test_contexts,test_answers,predictions,model_key)
+    save_answers(test_questions, test_contexts, test_answers, predictions, model_key)
+
 
 if __name__ == "__main__":
     main()

@@ -78,7 +78,7 @@ def compute_f1(predictions, truths):
 
 def load_json(file_path):
     """load json file"""
-    with open(file_path, "r") as f:
+    with open(file_path, "r", encoding="utf-8") as f:
         data = json.load(f)
     return data
 

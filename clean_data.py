@@ -1,10 +1,8 @@
 import csv
 import string
-
 import pandas as pd
 from nltk.tokenize import word_tokenize
 from tqdm import tqdm
-
 from english_words import english_words_set
 from utils import write_to_file, write_to_json
 
@@ -15,6 +13,8 @@ def read_data(file_path):
 
 
 def clean_data(data):
+
+    """ Remove equations, shorter contexts and Return the cleaned texts """
     cleaned_text = []
     removed = []
 
@@ -40,6 +40,9 @@ def clean_data(data):
 
 
 def read_test_qac_triplets():
+
+    """Read csv file and Return as dictionary"""
+
     test_file = open("./data/slp_questions.csv", "r", encoding="utf-8")
     test_qac = csv.DictReader(test_file)
     qa_pairs = [

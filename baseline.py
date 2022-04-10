@@ -1,12 +1,16 @@
 from torch.utils.data import DataLoader
-
 import evaluate
-from utils import (DomainDataset, compute_em, compute_f1, load_json,
-                   model_name_to_class_dict, save_answers)
+from utils import (
+    DomainDataset,
+    compute_em,
+    compute_f1,
+    load_json,
+    model_name_to_class_dict,
+    save_answers,
+)
 
 model_name_to_class = model_name_to_class_dict()
-for k,v in model_name_to_class.items():
-
+for k, v in model_name_to_class.items():
 
     model, tokenizer, model_name, _ = v.values()
 
@@ -17,7 +21,7 @@ for k,v in model_name_to_class.items():
 
     tokenizer = tokenizer.from_pretrained(model_name)
     model = model.from_pretrained(model_name)
-    
+
     test_encodings = tokenizer(
         test_contexts, test_questions, truncation=True, padding=True
     )
@@ -33,4 +37,6 @@ for k,v in model_name_to_class.items():
     print(f"F1: {f1}")
     print(f"EM: {em}")
 
-    save_answers(test_questions,test_contexts,test_answers,predictions,f"{k}_baseline")
+    save_answers(
+        test_questions, test_contexts, test_answers, predictions, f"{k}_baseline"
+    )

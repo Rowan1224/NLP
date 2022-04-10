@@ -38,10 +38,9 @@ This will store the fine-tuned models inside the `./models/` directory. Finally,
 
 To run the semantic search models, execute:
 - `python semantic_search.py` (cosine similarity)
-- `python semantic_search_faiss.py` (faiss)
+- `python semantic_search.py -f` (faiss)
 
 The code returns the results of following three models:
 - Just a semantic search model which returns the best context
-- A semantic search model in addition to the text2text generation model
 - Best Question answering models with the semantic search approach
-- text2text generation model with original contexts
+
