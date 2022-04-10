@@ -7,7 +7,7 @@
 ## Installation <a name="installation"></a>
 
 The libraries required for the successful execution of this code are mentioned in requirements.txt. In order to install all the libraries:
-`pip install -r requirements.txt`
+`pip install -r requirements.txt`. We need to download the `punkt` from nltk package in order to do some pre-processing. For this, run the command `python -m nltk.downloader punkt` in your terminal
 
 ## File Descriptions <a name="files"></a>
 
