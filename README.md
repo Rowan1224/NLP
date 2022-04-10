@@ -41,7 +41,5 @@ To run the semantic search models, execute:
 - `python semantic_search.py` (cosine similarity)
 - `python semantic_search.py -f` (faiss)
 
-The script returns the results of following three models:
-- Just a semantic search model which returns the best context
-- Best Question answering models with the semantic search approach
+The script returns the results of Best Question answering models with the semantic search approach
 
