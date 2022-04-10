@@ -3,7 +3,7 @@ sentence-transformers
 numpy
 torch
 tensorflow
-faiss-cpu
+faiss-gpu
 scikit-learn
 pandas
 nltk
