@@ -26,7 +26,7 @@ To fine-tune/domain-adapt the models, use the sample commandos as bellow:
 - Albert: `python fine_tune.py -m albert -t squad -ts`
 - Electra `python fine_tune.py -m electra -t fine -ts`
 
-To customize the batch size and learning rate, use parameters `-b` and `-lr`. The argument `-t` refers to the type of the model e.g `fine` is the base pre-trained model and `squad` is the squad model. The argument `-ts` should be given if the model is to be trained on the full training set.
+To customize the batch size and learning rate, use parameters `-b` and `-lr`. The argument `-t` refers to the type of the model e.g `fine` is fine-tuning the base pre-trained model and `squad` is domain-adapting for the squad model. The argument `-ts` should be given if the model is to be trained on the full training set.
 
 The fine-tuned/domain-adapted models will be stored in the `./models/` directory. 
 
@@ -35,7 +35,7 @@ To evalute the QA models, use `evaluate.py`, use the sample commandos as bellow:
 - Albert: `python evaluate.py -m albert -t squad -path [saved model path]`
 - Electra `python evaluate.py -m electra -t fine -path [saved model path]`
 
-Notice: `-path` argument is optional, by defualt this evaluate the saved models uploaded in hugginface hub
+Notice: `-path` argument is optional, by defualt this script evaluate the saved models uploaded in hugginface hub (https://huggingface.co/rowan1224).
 
 To run the semantic search models, execute:
 - `python semantic_search.py` (cosine similarity)
