@@ -1,7 +1,7 @@
 
 ### Table of Contents
 
-1. [Project Motivation](#motivation)
+1. [Installation](#motivation)
 2. [File Descriptions](#files)
 
 ## Installation <a name="installation"></a>
