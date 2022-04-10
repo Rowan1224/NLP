@@ -8,3 +8,5 @@ models
 evaluation.py
 qas_error.log
 execute.sh
+common-questions.txt
+post-analysis.py
