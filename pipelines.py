@@ -1,6 +1,5 @@
 import itertools
 import logging
-from selectors import EpollSelector
 from typing import Optional, Dict, Union
 logging.basicConfig(filename='qas_error.log')
 from nltk import sent_tokenize

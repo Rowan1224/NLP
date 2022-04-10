@@ -1,9 +1,12 @@
 import argparse
+
 import torch
+from numpy import save
 from torch.utils.data import DataLoader
 from tqdm import tqdm
-from utils import DomainDataset, compute_em, compute_f1, load_json, save_answers, saved_models
 
+from utils import (DomainDataset, compute_em, compute_f1, load_json,
+                   save_answers, saved_models_dict)
 
 
 def create_arg_parser():
@@ -74,7 +77,7 @@ def main():
     args = create_arg_parser()
     
     
-
+    saved_models = saved_models_dict()
     model, tokenizer, fine_model_name, squad_model_name = saved_models[args.model].values()
     model_name = fine_model_name if args.type == 'fine' else squad_model_name
     model_key = f"{args.model}-{args.type}"
