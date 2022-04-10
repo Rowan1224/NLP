@@ -11,7 +11,7 @@ The libraries required for the successful execution of this code are mentioned i
 
 ## File Descriptions <a name="files"></a>
 
-To start with pre-processing and removing the bad contexts, please run `clean_data.py` file to generate a cleaned contexts file `./data/cleaned_contexts.txt` and to store the test data in json file `./data/test_qac.json`. This script also stores the test data (questions, answers, and contexts):
+To start with pre-processing and removing the bad contexts, please run `clean_data.py` file to generate a cleaned contexts file `./data/cleaned_contexts.txt` and to store the test data in json file `./data/test_qac.json`:
 ```python clean_data.py```
 
 
