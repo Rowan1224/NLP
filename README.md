@@ -12,7 +12,8 @@ The libraries required for the successful execution of this code are mentioned i
 ## File Descriptions <a name="files"></a>
 
 To start with pre-processing and removing the bad contexts, please run `clean_data.py` file to generate a cleaned contexts file `./data/cleaned_contexts.txt` and to store the test data in json file `./data/test_qac.json`:
-```python clean_data.py```
+
+- ```python clean_data.py```
 
 
 Next, we generate the synthetic question answer pairs for fine-tuning/domain adaptation purposes. To do this, run `python qas_generate.py` which generates the question answer pairs along with the contexts and store it as `./data/synthetic_qa_pairs.json`
