@@ -7,7 +7,7 @@
 ## Installation <a name="installation"></a>
 
 The libraries required for the successful execution of this code are mentioned in requirements.txt. In order to install all the libraries:
-`pip install -r requirements.txt`
+`pip install -r requirements.txt`. We need to download the `punkt` from nltk package in order to do some pre-processing. For this, run the command `python -m nltk.downloader punkt` in your terminal
 
 ## File Descriptions <a name="files"></a>
 
@@ -16,7 +16,7 @@ To start with pre-processing and removing the bad contexts, please run `clean_da
 - ```python clean_data.py```
 
 
-Next, we generate the synthetic question answer pairs for fine-tuning/domain adaptation purposes. To do this, run `python qas_generate.py` which generates the question answer pairs along with the contexts and store it as `./data/synthetic_qa_pairs.json`
+Next, we generate the synthetic question answer pairs for fine-tuning/domain adaptation purposes. To do this, run `python qas_generate.py` which generates the question answer pairs along with the contexts and store it as `./data/synthetic_qa_pairs.json`. Note, you would need to downgrade your transformers library to `3.0.0` version as the code for [QA Generation](https://github.com/patil-suraj/question_generation) only works with that version. Then you need to upgrade again to the most recent version in order to run the following code.
 
 To run the baseline models, execute:
 - `python baseline.py`
@@ -41,5 +41,5 @@ To run the semantic search models, execute:
 - `python semantic_search.py` (cosine similarity)
 - `python semantic_search.py -f` (faiss)
 
-The script returns the results of Best Question answering models with the semantic search approach
+The script returns the results of Best question answering models with the semantic search approach.
 
