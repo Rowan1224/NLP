@@ -151,6 +151,8 @@ def model_name_to_class_dict():
         DistilBertTokenizerFast,
         ElectraForQuestionAnswering,
         ElectraTokenizerFast,
+        RobertaForQuestionAnswering,
+        RobertaTokenizerFast,
     )
 
     return {
@@ -172,6 +174,12 @@ def model_name_to_class_dict():
                 "fine_model_name": "google/electra-base-discriminator",
                 "squad_model_name": "Palak/google_electra-base-discriminator_squad",
             },
+            "roberta": {
+            "model": RobertaForQuestionAnswering,
+            "tokenizer": RobertaTokenizerFast,
+            "fine_model_name": "roberta-base",
+            "squad_model_name": "deepset/roberta-base-squad2",
+        },
         }
 
 def saved_models_dict():
@@ -182,6 +190,8 @@ def saved_models_dict():
         DistilBertTokenizerFast,
         ElectraForQuestionAnswering,
         ElectraTokenizerFast,
+        RobertaForQuestionAnswering,
+        RobertaTokenizerFast,
     )
     return {
         "albert": {
@@ -202,4 +212,5 @@ def saved_models_dict():
             "fine_model_name": "rowan1224/electra-slp",
             "squad_model_name": "rowan1224/electra-squad-slp",
         },
+
     }

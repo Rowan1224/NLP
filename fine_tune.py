@@ -40,7 +40,7 @@ def create_arg_parser():
         "--model",
         default="albert",
         type=str,
-        choices=["bert", "albert", "electra"],
+        choices=["bert", "albert", "electra",'roberta'],
         help="Select the model for fine-tuning",
     )
 
